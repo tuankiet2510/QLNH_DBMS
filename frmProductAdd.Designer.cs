@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductAdd));
             this.label4 = new System.Windows.Forms.Label();
             this.btnBrowse = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,21 +36,21 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblAdd = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.lblID = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.txtCategory = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtState = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtImage = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txtPrice = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.cbbState = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.txtImage = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -153,13 +152,13 @@
             this.lblAdd.AutoSize = true;
             this.lblAdd.BackColor = System.Drawing.Color.Transparent;
             this.lblAdd.Font = new System.Drawing.Font("Constantia", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdd.Location = new System.Drawing.Point(277, 44);
+            this.lblAdd.Location = new System.Drawing.Point(225, 47);
             this.lblAdd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdd.Name = "lblAdd";
             this.lblAdd.Size = new System.Drawing.Size(351, 49);
             this.lblAdd.TabIndex = 1;
             this.lblAdd.Text = "Chi tiết sản phẩm";
-            this.lblAdd.Click += new System.EventHandler(this.lblAdd_Click);
+        
             // 
             // guna2Panel1
             // 
@@ -172,19 +171,6 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1564, 165);
             this.guna2Panel1.TabIndex = 23;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(13, 5);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(193, 155);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
             // 
             // btnSave
             // 
@@ -271,27 +257,6 @@
             this.txtCategory.Size = new System.Drawing.Size(429, 55);
             this.txtCategory.TabIndex = 35;
             // 
-            // txtState
-            // 
-            this.txtState.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtState.DefaultText = "";
-            this.txtState.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtState.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtState.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtState.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtState.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtState.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtState.Location = new System.Drawing.Point(233, 417);
-            this.txtState.Margin = new System.Windows.Forms.Padding(5, 10, 5, 10);
-            this.txtState.Name = "txtState";
-            this.txtState.PasswordChar = '\0';
-            this.txtState.PlaceholderText = "";
-            this.txtState.SelectedText = "";
-            this.txtState.SelectionStart = "".Length;
-            this.txtState.Size = new System.Drawing.Size(428, 55);
-            this.txtState.TabIndex = 37;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -302,17 +267,6 @@
             this.label2.Size = new System.Drawing.Size(144, 38);
             this.label2.TabIndex = 36;
             this.label2.Text = "Tình trạng";
-            // 
-            // txtImage
-            // 
-            this.txtImage.ImageRotate = 0F;
-            this.txtImage.Location = new System.Drawing.Point(931, 190);
-            this.txtImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtImage.Name = "txtImage";
-            this.txtImage.Size = new System.Drawing.Size(378, 369);
-            this.txtImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.txtImage.TabIndex = 32;
-            this.txtImage.TabStop = false;
             // 
             // txtPrice
             // 
@@ -346,13 +300,57 @@
             this.label3.TabIndex = 38;
             this.label3.Text = "Giá";
             // 
+            // cbbState
+            // 
+            this.cbbState.BackColor = System.Drawing.Color.Transparent;
+            this.cbbState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbState.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbState.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbState.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cbbState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbbState.ItemHeight = 32;
+            this.cbbState.Items.AddRange(new object[] {
+            "Còn",
+            "Hết"});
+            this.cbbState.Location = new System.Drawing.Point(234, 417);
+            this.cbbState.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbbState.Name = "cbbState";
+            this.cbbState.Size = new System.Drawing.Size(427, 38);
+            this.cbbState.TabIndex = 40;
+            // 
+            // txtImage
+            // 
+            this.txtImage.Image = global::GUI.Properties.Resources.disk;
+            this.txtImage.ImageRotate = 0F;
+            this.txtImage.Location = new System.Drawing.Point(922, 175);
+            this.txtImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtImage.Name = "txtImage";
+            this.txtImage.Size = new System.Drawing.Size(378, 369);
+            this.txtImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.txtImage.TabIndex = 32;
+            this.txtImage.TabStop = false;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = global::GUI.Properties.Resources.menu;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(13, 0);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(188, 155);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // frmProductAdd
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1564, 689);
+            this.Controls.Add(this.cbbState);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtState);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.label4);
@@ -374,9 +372,9 @@
             this.Load += new System.EventHandler(this.frmProductAdd_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,9 +396,9 @@
         private System.Windows.Forms.Label lblID;
         public Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         public Guna.UI2.WinForms.Guna2TextBox txtCategory;
-        public Guna.UI2.WinForms.Guna2TextBox txtState;
         private System.Windows.Forms.Label label2;
         public Guna.UI2.WinForms.Guna2TextBox txtPrice;
         private System.Windows.Forms.Label label3;
+        public Guna.UI2.WinForms.Guna2ComboBox cbbState;
     }
 }

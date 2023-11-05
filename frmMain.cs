@@ -107,5 +107,30 @@ namespace QLNH_DBMS
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnMinSize_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CenterPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            AddControls(new frmCustomer());
+        }
     }
 }

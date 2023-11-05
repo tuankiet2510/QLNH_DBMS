@@ -21,7 +21,7 @@ namespace QLNH_DBMS
         {
             InitializeComponent();
             productBus = new ProductBUS();
-            dtSP = new DataTable();
+          
         }
 
         void LoadData()
@@ -49,6 +49,7 @@ namespace QLNH_DBMS
             frm.cbbCateID.ValueMember = "ID";
             frm.cbbCateID.DisplayMember = "Display";*/
             frm.txtProductID.ReadOnly = false;
+            frm.cbbState.SelectedIndex = frm.cbbState.Items.IndexOf("Còn");
             frm.ShowDialog();
             LoadData();
         }
@@ -62,7 +63,7 @@ namespace QLNH_DBMS
         {
             try
             {
-              
+                dtSP = new DataTable();
                 dtSP.Clear();
                 dtSP = productBus.FindProduct(txtSearchProduct.Text);
                 // Đưa dữ liệu lên DataGridView
@@ -82,6 +83,26 @@ namespace QLNH_DBMS
             {
                 int row = dgvProduct.CurrentCell.RowIndex;
                 frmProductAdd frm = new frmProductAdd();
+
+                /*frm.cbbCateID.DataSource = dbDM.LayDanhSachDanhMuc();
+                frm.cbbCateID.ValueMember = "ID";
+                frm.cbbCateID.DisplayMember = "Display";*/
+
+
+                //int x = dgvProduct.CurrentRow.Index;
+                /*frm.txtProductID.Text = dgvProduct.Rows[row].Cells["dgvMaSP"].Value.ToString();
+             frm.txtProductName.Text = dgvProduct.Rows[row].Cells["dgvTenSP"].Value.ToString();
+             frm.txtCategory.Text = dgvProduct.Rows[row].Cells["dgvCategory"].Value.ToString();
+             frm.txtState.Text = dgvProduct.Rows[row].Cells["dgvState"].Value.ToString();
+             frm.txtPrice.Text = dgvProduct.Rows[row].Cells["dgvPrice"].Value.ToString();*/
+                frm.txtProductID.Text = dgvProduct.CurrentRow.Cells["dgvMaSP"].Value.ToString();
+                frm.txtProductName.Text = dgvProduct.CurrentRow.Cells["dgvTenSP"].Value.ToString();
+                frm.txtCategory.Text = dgvProduct.CurrentRow.Cells["dgvCategory"].Value.ToString();
+                //frm.txtState.Text = dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString();
+                frm.cbbState.Text = dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString();
+                frm.txtPrice.Text = dgvProduct.CurrentRow.Cells["dgvPrice"].Value.ToString();
+             
+                frm.txtProductID.ReadOnly = true; //Chỉnh sửa
                 List<byte[]> dsIMG = productBus.getProductImg(dgvProduct.CurrentRow.Cells["dgvMaSP"].Value.ToString());
                 if (dsIMG.Count > 0)
                 {
@@ -102,23 +123,6 @@ namespace QLNH_DBMS
                 {
                     frm.txtImage.Image = null;
                 }
-                /*frm.cbbCateID.DataSource = dbDM.LayDanhSachDanhMuc();
-                frm.cbbCateID.ValueMember = "ID";
-                frm.cbbCateID.DisplayMember = "Display";*/
-
-
-                //int x = dgvProduct.CurrentRow.Index;
-                frm.txtProductID.Text = dgvProduct.CurrentRow.Cells["dgvMaSP"].Value.ToString();
-                frm.txtProductName.Text = dgvProduct.CurrentRow.Cells["dgvTenSP"].Value.ToString();
-                frm.txtCategory.Text = dgvProduct.CurrentRow.Cells["dgvCategory"].Value.ToString();
-                frm.txtState.Text = dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString();
-                frm.txtPrice.Text = dgvProduct.CurrentRow.Cells["dgvPrice"].Value.ToString();
-                /*frm.txtProductID.Text = dgvProduct.Rows[row].Cells["dgvMaSP"].Value.ToString();
-                frm.txtProductName.Text = dgvProduct.Rows[row].Cells["dgvTenSP"].Value.ToString();
-                frm.txtCategory.Text = dgvProduct.Rows[row].Cells["dgvCategory"].Value.ToString();
-                frm.txtState.Text = dgvProduct.Rows[row].Cells["dgvState"].Value.ToString();
-                frm.txtPrice.Text = dgvProduct.Rows[row].Cells["dgvPrice"].Value.ToString();*/
-                frm.txtProductID.ReadOnly = true; //Chỉnh sửa
                 frm.ShowDialog();
 
                 if (txtSearchProduct.Text != "")
@@ -128,7 +132,6 @@ namespace QLNH_DBMS
                 else
                 {
                     LoadData();
-                    Console.WriteLine("A");
                 }
             }
             else if (dgvProduct.CurrentCell.OwningColumn.Name == "dgvDel")

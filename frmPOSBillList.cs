@@ -12,6 +12,12 @@ namespace GUI
 {
     public partial class frmPOSBillList : Form
     {
+        DataTable dtBillList = null;
+        DataTable dtBillPrint = null;
+        string err;
+        public int MainID = 0;
+        public bool bonus;
+        public bool edit = false;
         public frmPOSBillList()
         {
             InitializeComponent();

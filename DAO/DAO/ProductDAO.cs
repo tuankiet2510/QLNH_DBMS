@@ -18,12 +18,13 @@ namespace DAO
         DataTable dtProduct;
         SqlConnection con;
         public ProductDAO(string role = null) { 
-            dtProduct = new DataTable();
+           // dtProduct = new DataTable();
             con = getConnection.GetSqlConnection();
 
         }
         public DataTable GetAllCategory() //Lấy tất cả danh mục sản phẩm
         {
+            dtProduct = new DataTable();
             string queryView = "SELECT * FROM V_DanhMucSanPham";
 
             //con = getConnection.GetSqlConnection();
@@ -32,44 +33,42 @@ namespace DAO
             con.Close();
             DataTable dtcategory = new DataTable();
             sda.Fill(dtcategory);
-            if(dtcategory.Rows.Count > 0)
-            {
-                Console.WriteLine("cor");
-            }
-            else
-            {
-                Console.WriteLine("Sai ");
-            }    
+            
             return dtcategory;
 
         }
         public DataTable getAllProduct_Product() //Lấy tất cả sản phẩm (KO LẤY ẢNH)
         {
+            dtProduct = new DataTable();
             string queryView = "SELECT * FROM V_Pro_DanhSachSanPham";
             //SqlConnection con = getConnection.GetSqlConnection();
             //con = getConnection.GetSqlConnection();
             con.Open();
             SqlDataAdapter sda = new SqlDataAdapter(queryView, con);
-            con.Close();
+            
             dtProduct.Clear();
             sda.Fill(dtProduct);
+            con.Close();
             return dtProduct;
         }
         public DataTable getAllProduct_POS() //L
         {
+            dtProduct = new DataTable();
             string queryView = "SELECT * FROM V_POS_DanhSachSanPham";
             //SqlConnection con = getConnection.GetSqlConnection();
             //con = getConnection.GetSqlConnection();
             con.Open();
             SqlDataAdapter sda = new SqlDataAdapter(queryView, con);
-            con.Close();
+           
             dtProduct.Clear();
             sda.Fill(dtProduct);
+            con.Close();
             return dtProduct;
         }
 
         public DataTable FindProduct(string name)
         {
+            dtProduct = new DataTable();
             string func_name = "func_findProductByName";
             string queryView = $"SELECT * FROM {func_name} (@name)";
             //SqlConnection con = getConnection.GetSqlConnection();
@@ -84,6 +83,7 @@ namespace DAO
 
             con.Close();
             return dtProduct;
+       
             //SqlDataAdapter sda = new SqlDataAdapter(queryView, con);
 
         }
@@ -150,7 +150,35 @@ namespace DAO
         public bool UpdateProduct(ProductDTO productDTO, ref string err)
         {
             string query = "pro_suaSanPham  @MaSP, @TenSP, @LoaiSP, @TinhTrang, @DonGia, @HinhAnh";
-            return true;
+            try
+            {
+                MemoryStream ms = new MemoryStream();
+                Image tmp = productDTO.Img;
+                tmp.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] imageByteArray = ms.ToArray();
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddRange(new[]
+               {
+                    new SqlParameter("@MaSP", productDTO.Id),
+                    new SqlParameter("@TenSP", productDTO.Name),
+                    new SqlParameter("@LoaiSP", productDTO.Category),
+                    new SqlParameter("@TinhTrang", productDTO.State),
+                     new SqlParameter("@DonGia", productDTO.Price),
+                     new SqlParameter("@HinhAnh", imageByteArray)
+                });
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return false;
         }
 
         public List<byte[]> GetProductImg(string MaSP)

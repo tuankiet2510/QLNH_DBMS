@@ -15,7 +15,7 @@ namespace QLNH_DBMS
 {
     public partial class frmProductAdd : Form
     {
-        string err;
+     
         ProductBUS productbus;
         ProductDTO productDTO;
         public frmProductAdd()
@@ -24,12 +24,6 @@ namespace QLNH_DBMS
             productbus = new ProductBUS();
             productDTO = new ProductDTO();
         }
-
-        private void lblAdd_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -51,7 +45,7 @@ namespace QLNH_DBMS
                     string[] splitValues = displayValue.Split('-');
                     string madm = splitValues[0];
                     string tendm = splitValues[1];*/
-                    productDTO = new ProductDTO(txtProductID.Text, txtProductName.Text, txtCategory.Text, txtState.Text, float.Parse(txtPrice.Text), txtImage.Image);
+                    productDTO = new ProductDTO(txtProductID.Text, txtProductName.Text, txtCategory.Text, cbbState.Text, float.Parse(txtPrice.Text), txtImage.Image);
                     if (productbus.updateProduct(productDTO))
                     {
                         MessageBox.Show("Đã sửa xong!");
@@ -71,7 +65,7 @@ namespace QLNH_DBMS
             {
                 try
                 {
-                    productDTO = new ProductDTO(txtProductID.Text, txtProductName.Text, txtCategory.Text,txtState.Text, float.Parse(txtPrice.Text), txtImage.Image);
+                    productDTO = new ProductDTO(txtProductID.Text, txtProductName.Text, txtCategory.Text,cbbState.Text, float.Parse(txtPrice.Text), txtImage.Image);
                     if (productbus.addProduct(productDTO))
                     {
                         MessageBox.Show("Đã thêm xong!");

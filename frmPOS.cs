@@ -19,6 +19,8 @@ namespace GUI
         public DateTime Time;
         public string CustomerName = "";
         public string CustomerPhone = "";
+        public int BillID = 0;
+        public int DetailID;
         DataTable dtDM;
         DataTable dtSP;
         ProductBUS productBus;
@@ -54,7 +56,7 @@ namespace GUI
                     {
                         Guna.UI2.WinForms.Guna2Button b = new Guna.UI2.WinForms.Guna2Button();
                         b.FillColor = Color.FromArgb(50, 55, 89);
-                        b.Size = new Size(120, 45);
+                        b.Size = new Size(145, 55);
                         b.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
                         b.Text = row["LoaiSP"].ToString();
                         b.TextAlign = HorizontalAlignment.Left;
@@ -123,7 +125,7 @@ namespace GUI
                 dtSP = new DataTable();
                 dtSP.Clear();
 
-                dtSP = productBus.getAllProduct_POS();
+                dtSP = productBus.  getAllProduct_POS();
 
                 foreach (DataRow item in dtSP.Rows)
                 {
@@ -234,6 +236,99 @@ namespace GUI
             Them = true;
             lblTotal.Text = "0.00";
             dgvPOS.Rows.Clear();
+        }
+
+        private void btnBillList_Click(object sender, EventArgs e)
+        {
+            frmPOSBillList frm = new frmPOSBillList();
+            frm.ShowDialog();
+
+
+            //Sau khi frm đóng
+            if (frm.MainID > 0 && frm.edit == true)
+            {
+                // Ra khỏi form Bill List 
+                Them = frm.bonus; //  Them  = false lúc này sẽ hiển thị Bill cần sửa lên dgvPOS
+                BillID = frm.MainID;
+               // OrderType = frm.OrderType; //Lấy ordertype để xác định có phải din in ko , nếu là din in thì inner join với BAN để lấy idTable
+                LoadEntries();
+                //  LoadData();
+
+            }
+        }
+
+        //Hieenr thi Bill can sua len dgvPOS
+        private void LoadEntries()
+        {
+            /*try
+            {
+                dtTblJoin = new DataTable();
+                dtTblJoin.Clear();
+                DataSet ds = new DataSet();
+                if (OrderType.Equals("Din in"))
+                {
+                    ds = dbTblMain.GetJoinTABLE(BillID);
+                    dtTblJoin = ds.Tables[0];
+                    TableName = dtTblJoin.Rows[0]["Tname"].ToString();
+                    TableID = dtTblJoin.Rows[0]["Tid"].ToString();
+                    btnDinIn.Checked = true;
+                    lblWaiter.Visible = true;
+                    lblTable.Visible = true;
+                }
+                else
+                {
+                    ds = dbTblMain.GetJoin(BillID);
+                    dtTblJoin = ds.Tables[0];
+                }
+
+
+                //Lay Du lieu cua BillID
+                if (dtTblJoin.Rows[0]["orderType"].ToString() == "Delivery")
+                {
+                    btnDelivery.Checked = true;
+                    lblWaiter.Visible = false;
+                    lblTable.Visible = false;
+                }
+                else if (dtTblJoin.Rows[0]["orderType"].ToString() == "Take away")
+                {
+                    btnTakeAway.Checked = true; lblWaiter.Visible = false;
+                    lblTable.Visible = false;
+                }
+
+                dgvPOS.Rows.Clear();
+                foreach (DataRow item in dtTblJoin.Rows)
+                {
+                    lblTable.Text = item["TableName"].ToString();
+                    lblWaiter.Text = item["WaiterName"].ToString();
+                    string detailIDD = item["DetailID"].ToString();
+                    string proName = item["proName"].ToString();
+                    string proID = item["proID"].ToString();
+                    string qty = item["qty"].ToString();
+                    string price = item["price"].ToString();
+                    string amount = item["amount"].ToString();
+                    object[] obj = { detailIDD, proID, proName, qty, price, amount };
+                    dgvPOS.Rows.Add(obj);
+                }
+
+                GetTotal();
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Không thể load dữ liệu. Lỗi: ");
+            }*/
+
+
+        }
+
+        private void btnKOT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHold_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
