@@ -1,4 +1,5 @@
 ﻿using BUS;
+using DTO;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -26,11 +27,13 @@ namespace GUI
         ProductBUS productBus;
         double total;
         public bool Them = true; // CHo khởi tạo ban đầu bằng true 
+        CustomerDTO customerDTO;
         public frmPOS()
         {
             InitializeComponent();
             productBus = new ProductBUS();
             this.Controls.Add(hScrollBar1);
+            customerDTO = new CustomerDTO();
         }
         private void GetCategory()
         {
@@ -236,6 +239,10 @@ namespace GUI
             Them = true;
             lblTotal.Text = "0.00";
             dgvPOS.Rows.Clear();
+            frmCustomer frmCus = new frmCustomer();
+            frmCus.ShowDialog();
+            customerDTO = frmCus.customerDTO;
+            
         }
 
         private void btnBillList_Click(object sender, EventArgs e)

@@ -400,5 +400,11 @@
   <ItemGroup>
     <None Include="Resources\identity-document-computer-icons-business-clip-art-id-card-removebg-preview %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select-icon-14.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select_icon-icons.com_48233.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

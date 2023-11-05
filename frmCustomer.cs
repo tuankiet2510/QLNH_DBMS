@@ -1,4 +1,5 @@
 ﻿using BUS;
+using DTO;
 using QLNH_DBMS;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,12 @@ namespace GUI
     {
         CustomerBUS customerBUS;
         DataTable dtCustomer;
+        public CustomerDTO customerDTO;
         public frmCustomer()
         {
             InitializeComponent();
             customerBUS = new CustomerBUS();
+            customerDTO = new CustomerDTO();
             cbbFindType.SelectedIndex = cbbFindType.Items.IndexOf("SĐT");
 
         }
@@ -104,6 +107,21 @@ namespace GUI
                         MessageBox.Show("Xoá không thành công. Lỗi: '" + customerBUS.err + "'");
                     }
                 }
+            }
+            else if(dgvCustomer.CurrentCell.OwningColumn.Name == "dgvChooseCustomer")
+            {
+                DialogResult result = MessageBox.Show("Chọn khách hàng này?", "Câu hỏi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+
+                    customerDTO = new CustomerDTO(
+                         dgvCustomer.CurrentRow.Cells["dgvMaKH"].Value.ToString(),
+                         dgvCustomer.CurrentRow.Cells["dgvTenKH"].Value.ToString(),
+                         dgvCustomer.CurrentRow.Cells["dgvSDT"].Value.ToString(),
+                         int.Parse(dgvCustomer.CurrentRow.Cells["dgvDiem"].Value.ToString()));
+                    this.Close();
+                }
+                //LẤY RA customerDTO chuyển qua form POS
             }
         }
 

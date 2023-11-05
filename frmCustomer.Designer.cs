@@ -40,17 +40,20 @@
             this.lblProduct = new System.Windows.Forms.Label();
             this.lblSearchProduct = new System.Windows.Forms.Label();
             this.dgvCustomer = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.cbbFindType = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txtSearchCustomer = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnAdd = new Guna.UI2.WinForms.Guna2ImageButton();
             this.dgvMaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDiem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvChooseCustomer = new System.Windows.Forms.DataGridViewImageColumn();
             this.dgvEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.dgvDel = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txtSearchCustomer = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnAdd = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.cbbFindType = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +86,7 @@
             this.guna2Separator1.Location = new System.Drawing.Point(24, 156);
             this.guna2Separator1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(1449, 12);
+            this.guna2Separator1.Size = new System.Drawing.Size(1260, 12);
             this.guna2Separator1.TabIndex = 15;
             // 
             // lblProduct
@@ -132,6 +135,7 @@
             this.dgvTenKH,
             this.dgvSDT,
             this.dgvDiem,
+            this.dgvChooseCustomer,
             this.dgvEdit,
             this.dgvDel});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -143,7 +147,7 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCustomer.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCustomer.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvCustomer.Location = new System.Drawing.Point(35, 187);
+            this.dgvCustomer.Location = new System.Drawing.Point(12, 187);
             this.dgvCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.ReadOnly = true;
@@ -160,7 +164,7 @@
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.IndianRed;
             this.dgvCustomer.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvCustomer.RowTemplate.Height = 35;
-            this.dgvCustomer.Size = new System.Drawing.Size(1532, 798);
+            this.dgvCustomer.Size = new System.Drawing.Size(1366, 561);
             this.dgvCustomer.TabIndex = 16;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -184,6 +188,99 @@
             this.dgvCustomer.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCustomer.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
+            // 
+            // cbbFindType
+            // 
+            this.cbbFindType.BackColor = System.Drawing.Color.Transparent;
+            this.cbbFindType.BorderColor = System.Drawing.Color.Transparent;
+            this.cbbFindType.BorderThickness = 0;
+            this.cbbFindType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbFindType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbFindType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbFindType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbFindType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbbFindType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbbFindType.ItemHeight = 30;
+            this.cbbFindType.Items.AddRange(new object[] {
+            "SĐT",
+            "Mã khách hàng"});
+            this.cbbFindType.Location = new System.Drawing.Point(811, 28);
+            this.cbbFindType.Name = "cbbFindType";
+            this.cbbFindType.Size = new System.Drawing.Size(242, 36);
+            this.cbbFindType.TabIndex = 17;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn3.FillWeight = 50F;
+            this.dataGridViewImageColumn3.HeaderText = "";
+            this.dataGridViewImageColumn3.Image = global::GUI.Properties.Resources.edit;
+            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn3.MinimumWidth = 50;
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.ReadOnly = true;
+            this.dataGridViewImageColumn3.Width = 50;
+            // 
+            // dataGridViewImageColumn4
+            // 
+            this.dataGridViewImageColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn4.FillWeight = 50F;
+            this.dataGridViewImageColumn4.HeaderText = "";
+            this.dataGridViewImageColumn4.Image = global::GUI.Properties.Resources.delete;
+            this.dataGridViewImageColumn4.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn4.MinimumWidth = 50;
+            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
+            this.dataGridViewImageColumn4.ReadOnly = true;
+            this.dataGridViewImageColumn4.Width = 50;
+            // 
+            // dataGridViewImageColumn5
+            // 
+            this.dataGridViewImageColumn5.HeaderText = "Chọn Khách Hàng";
+            this.dataGridViewImageColumn5.Image = global::GUI.Properties.Resources.select_icon_14;
+            this.dataGridViewImageColumn5.MinimumWidth = 8;
+            this.dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
+            this.dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn5.Width = 236;
+            // 
+            // txtSearchCustomer
+            // 
+            this.txtSearchCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchCustomer.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearchCustomer.DefaultText = "";
+            this.txtSearchCustomer.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearchCustomer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearchCustomer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchCustomer.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchCustomer.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearchCustomer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearchCustomer.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearchCustomer.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearchCustomer.IconLeft")));
+            this.txtSearchCustomer.Location = new System.Drawing.Point(639, 87);
+            this.txtSearchCustomer.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtSearchCustomer.Name = "txtSearchCustomer";
+            this.txtSearchCustomer.PasswordChar = '\0';
+            this.txtSearchCustomer.PlaceholderText = "";
+            this.txtSearchCustomer.SelectedText = "";
+            this.txtSearchCustomer.Size = new System.Drawing.Size(610, 60);
+            this.txtSearchCustomer.TabIndex = 11;
+            this.txtSearchCustomer.TextChanged += new System.EventHandler(this.txtSearchCustomer_TextChanged);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnAdd.HoverState.ImageSize = new System.Drawing.Size(68, 68);
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnAdd.ImageRotate = 0F;
+            this.btnAdd.IndicateFocus = true;
+            this.btnAdd.Location = new System.Drawing.Point(94, 61);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnAdd.Size = new System.Drawing.Size(116, 98);
+            this.btnAdd.TabIndex = 14;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgvMaKH
             // 
@@ -217,6 +314,18 @@
             this.dgvDiem.Name = "dgvDiem";
             this.dgvDiem.ReadOnly = true;
             // 
+            // dgvChooseCustomer
+            // 
+            this.dgvChooseCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvChooseCustomer.HeaderText = "Chọn khách hàng";
+            this.dgvChooseCustomer.Image = global::GUI.Properties.Resources.select_icon_icons_com_48233;
+            this.dgvChooseCustomer.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvChooseCustomer.MinimumWidth = 8;
+            this.dgvChooseCustomer.Name = "dgvChooseCustomer";
+            this.dgvChooseCustomer.ReadOnly = true;
+            this.dgvChooseCustomer.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvChooseCustomer.Width = 209;
+            // 
             // dgvEdit
             // 
             this.dgvEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -241,94 +350,22 @@
             this.dgvDel.ReadOnly = true;
             this.dgvDel.Width = 50;
             // 
-            // dataGridViewImageColumn3
+            // guna2ControlBox1
             // 
-            this.dataGridViewImageColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewImageColumn3.FillWeight = 50F;
-            this.dataGridViewImageColumn3.HeaderText = "";
-            this.dataGridViewImageColumn3.Image = global::GUI.Properties.Resources.edit;
-            this.dataGridViewImageColumn3.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn3.MinimumWidth = 50;
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.ReadOnly = true;
-            this.dataGridViewImageColumn3.Width = 50;
-            // 
-            // dataGridViewImageColumn4
-            // 
-            this.dataGridViewImageColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewImageColumn4.FillWeight = 50F;
-            this.dataGridViewImageColumn4.HeaderText = "";
-            this.dataGridViewImageColumn4.Image = global::GUI.Properties.Resources.delete;
-            this.dataGridViewImageColumn4.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dataGridViewImageColumn4.MinimumWidth = 50;
-            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
-            this.dataGridViewImageColumn4.ReadOnly = true;
-            this.dataGridViewImageColumn4.Width = 50;
-            // 
-            // txtSearchCustomer
-            // 
-            this.txtSearchCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearchCustomer.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearchCustomer.DefaultText = "";
-            this.txtSearchCustomer.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearchCustomer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearchCustomer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearchCustomer.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearchCustomer.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearchCustomer.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSearchCustomer.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearchCustomer.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearchCustomer.IconLeft")));
-            this.txtSearchCustomer.Location = new System.Drawing.Point(639, 87);
-            this.txtSearchCustomer.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtSearchCustomer.Name = "txtSearchCustomer";
-            this.txtSearchCustomer.PasswordChar = '\0';
-            this.txtSearchCustomer.PlaceholderText = "";
-            this.txtSearchCustomer.SelectedText = "";
-            this.txtSearchCustomer.Size = new System.Drawing.Size(414, 60);
-            this.txtSearchCustomer.TabIndex = 11;
-            this.txtSearchCustomer.TextChanged += new System.EventHandler(this.txtSearchCustomer_TextChanged);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnAdd.HoverState.ImageSize = new System.Drawing.Size(68, 68);
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnAdd.ImageRotate = 0F;
-            this.btnAdd.IndicateFocus = true;
-            this.btnAdd.Location = new System.Drawing.Point(94, 61);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnAdd.Size = new System.Drawing.Size(116, 98);
-            this.btnAdd.TabIndex = 14;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // cbbFindType
-            // 
-            this.cbbFindType.BackColor = System.Drawing.Color.Transparent;
-            this.cbbFindType.BorderColor = System.Drawing.Color.Transparent;
-            this.cbbFindType.BorderThickness = 0;
-            this.cbbFindType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbFindType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbFindType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbbFindType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbbFindType.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbbFindType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbbFindType.ItemHeight = 30;
-            this.cbbFindType.Items.AddRange(new object[] {
-            "SĐT",
-            "Mã khách hàng"});
-            this.cbbFindType.Location = new System.Drawing.Point(811, 28);
-            this.cbbFindType.Name = "cbbFindType";
-            this.cbbFindType.Size = new System.Drawing.Size(242, 36);
-            this.cbbFindType.TabIndex = 17;
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
+            this.guna2ControlBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1319, -5);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.Size = new System.Drawing.Size(72, 69);
+            this.guna2ControlBox1.TabIndex = 18;
             // 
             // frmCustomer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1579, 998);
+            this.ClientSize = new System.Drawing.Size(1390, 763);
+            this.Controls.Add(this.guna2ControlBox1);
             this.Controls.Add(this.cbbFindType);
             this.Controls.Add(this.txtSearchCustomer);
             this.Controls.Add(this.btnAdd);
@@ -338,7 +375,9 @@
             this.Controls.Add(this.dgvCustomer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCustomer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCustomer";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.ResumeLayout(false);
@@ -358,12 +397,15 @@
         private System.Windows.Forms.Label lblProduct;
         private System.Windows.Forms.Label lblSearchProduct;
         private Guna.UI2.WinForms.Guna2DataGridView dgvCustomer;
+        private Guna.UI2.WinForms.Guna2ComboBox cbbFindType;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTenKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvSDT;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvDiem;
+        private System.Windows.Forms.DataGridViewImageColumn dgvChooseCustomer;
         private System.Windows.Forms.DataGridViewImageColumn dgvEdit;
         private System.Windows.Forms.DataGridViewImageColumn dgvDel;
-        private Guna.UI2.WinForms.Guna2ComboBox cbbFindType;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }

@@ -35,6 +35,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dgvBillList = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.lblAdd = new System.Windows.Forms.Label();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.dgvMaBill = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvWaiter = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,13 +51,6 @@
             this.dgvTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.dgvPrint = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.lblAdd = new System.Windows.Forms.Label();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillList)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -149,86 +149,6 @@
             this.dgvBillList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvBillList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // dgvMaBill
-            // 
-            this.dgvMaBill.DataPropertyName = "MaBill";
-            this.dgvMaBill.HeaderText = "Bill No";
-            this.dgvMaBill.MinimumWidth = 6;
-            this.dgvMaBill.Name = "dgvMaBill";
-            this.dgvMaBill.ReadOnly = true;
-            // 
-            // dgvTable
-            // 
-            this.dgvTable.DataPropertyName = "TableName";
-            this.dgvTable.HeaderText = "Table";
-            this.dgvTable.MinimumWidth = 8;
-            this.dgvTable.Name = "dgvTable";
-            this.dgvTable.ReadOnly = true;
-            // 
-            // dgvWaiter
-            // 
-            this.dgvWaiter.DataPropertyName = "WaiterName";
-            this.dgvWaiter.HeaderText = "Waiter";
-            this.dgvWaiter.MinimumWidth = 8;
-            this.dgvWaiter.Name = "dgvWaiter";
-            this.dgvWaiter.ReadOnly = true;
-            // 
-            // dgvTime
-            // 
-            this.dgvTime.DataPropertyName = "aTime";
-            this.dgvTime.HeaderText = "Time";
-            this.dgvTime.MinimumWidth = 8;
-            this.dgvTime.Name = "dgvTime";
-            this.dgvTime.ReadOnly = true;
-            // 
-            // dgvOrderType
-            // 
-            this.dgvOrderType.DataPropertyName = "orderType";
-            this.dgvOrderType.HeaderText = "OrderType";
-            this.dgvOrderType.MinimumWidth = 8;
-            this.dgvOrderType.Name = "dgvOrderType";
-            this.dgvOrderType.ReadOnly = true;
-            // 
-            // dgvStatus
-            // 
-            this.dgvStatus.DataPropertyName = "status";
-            this.dgvStatus.HeaderText = "Status";
-            this.dgvStatus.MinimumWidth = 8;
-            this.dgvStatus.Name = "dgvStatus";
-            this.dgvStatus.ReadOnly = true;
-            // 
-            // dgvTotal
-            // 
-            this.dgvTotal.DataPropertyName = "total";
-            this.dgvTotal.HeaderText = "Total";
-            this.dgvTotal.MinimumWidth = 8;
-            this.dgvTotal.Name = "dgvTotal";
-            this.dgvTotal.ReadOnly = true;
-            // 
-            // dgvEdit
-            // 
-            this.dgvEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dgvEdit.FillWeight = 50F;
-            this.dgvEdit.HeaderText = "";
-            this.dgvEdit.Image = global::GUI.Properties.Resources.edit;
-            this.dgvEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvEdit.MinimumWidth = 50;
-            this.dgvEdit.Name = "dgvEdit";
-            this.dgvEdit.ReadOnly = true;
-            this.dgvEdit.Width = 50;
-            // 
-            // dgvPrint
-            // 
-            this.dgvPrint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dgvPrint.FillWeight = 50F;
-            this.dgvPrint.HeaderText = "";
-            this.dgvPrint.Image = global::GUI.Properties.Resources.icons8_print_100;
-            this.dgvPrint.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvPrint.MinimumWidth = 50;
-            this.dgvPrint.Name = "dgvPrint";
-            this.dgvPrint.ReadOnly = true;
-            this.dgvPrint.Width = 50;
-            // 
             // btnSave
             // 
             this.btnSave.AutoRoundedCorners = true;
@@ -318,6 +238,86 @@
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
+            // 
+            // dgvMaBill
+            // 
+            this.dgvMaBill.DataPropertyName = "MaHD";
+            this.dgvMaBill.HeaderText = "Mã hóa đơn";
+            this.dgvMaBill.MinimumWidth = 6;
+            this.dgvMaBill.Name = "dgvMaBill";
+            this.dgvMaBill.ReadOnly = true;
+            // 
+            // dgvTable
+            // 
+            this.dgvTable.DataPropertyName = "tab";
+            this.dgvTable.HeaderText = "Mã bàn";
+            this.dgvTable.MinimumWidth = 8;
+            this.dgvTable.Name = "dgvTable";
+            this.dgvTable.ReadOnly = true;
+            // 
+            // dgvWaiter
+            // 
+            this.dgvWaiter.DataPropertyName = "WaiterName";
+            this.dgvWaiter.HeaderText = "Waiter";
+            this.dgvWaiter.MinimumWidth = 8;
+            this.dgvWaiter.Name = "dgvWaiter";
+            this.dgvWaiter.ReadOnly = true;
+            // 
+            // dgvTime
+            // 
+            this.dgvTime.DataPropertyName = "aTime";
+            this.dgvTime.HeaderText = "Time";
+            this.dgvTime.MinimumWidth = 8;
+            this.dgvTime.Name = "dgvTime";
+            this.dgvTime.ReadOnly = true;
+            // 
+            // dgvOrderType
+            // 
+            this.dgvOrderType.DataPropertyName = "orderType";
+            this.dgvOrderType.HeaderText = "OrderType";
+            this.dgvOrderType.MinimumWidth = 8;
+            this.dgvOrderType.Name = "dgvOrderType";
+            this.dgvOrderType.ReadOnly = true;
+            // 
+            // dgvStatus
+            // 
+            this.dgvStatus.DataPropertyName = "status";
+            this.dgvStatus.HeaderText = "Status";
+            this.dgvStatus.MinimumWidth = 8;
+            this.dgvStatus.Name = "dgvStatus";
+            this.dgvStatus.ReadOnly = true;
+            // 
+            // dgvTotal
+            // 
+            this.dgvTotal.DataPropertyName = "total";
+            this.dgvTotal.HeaderText = "Total";
+            this.dgvTotal.MinimumWidth = 8;
+            this.dgvTotal.Name = "dgvTotal";
+            this.dgvTotal.ReadOnly = true;
+            // 
+            // dgvEdit
+            // 
+            this.dgvEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvEdit.FillWeight = 50F;
+            this.dgvEdit.HeaderText = "";
+            this.dgvEdit.Image = global::GUI.Properties.Resources.edit;
+            this.dgvEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvEdit.MinimumWidth = 50;
+            this.dgvEdit.Name = "dgvEdit";
+            this.dgvEdit.ReadOnly = true;
+            this.dgvEdit.Width = 50;
+            // 
+            // dgvPrint
+            // 
+            this.dgvPrint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvPrint.FillWeight = 50F;
+            this.dgvPrint.HeaderText = "";
+            this.dgvPrint.Image = global::GUI.Properties.Resources.icons8_print_100;
+            this.dgvPrint.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvPrint.MinimumWidth = 50;
+            this.dgvPrint.Name = "dgvPrint";
+            this.dgvPrint.ReadOnly = true;
+            this.dgvPrint.Width = 50;
             // 
             // frmPOSBillList
             // 
