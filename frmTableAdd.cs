@@ -7,14 +7,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BUS;
+using QLNH_DBMS;
 
 namespace GUI
 {
     public partial class frmTableAdd : Form
     {
-        public frmTableAdd()
+        private string maBan;
+        private TableBUS tableBus = new TableBUS();
+        public frmTableAdd(string maBan)
         {
             InitializeComponent();
+            this.maBan = maBan;
+            txtMaBan.Text = maBan;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string trangThai = cbTrangThai.Text;
+            int tienDatCoc = Int32.Parse(txtTienDatCoc.Text ?? "0");
+            string maKH = txtKH.Text;
+
+            bool success = tableBus.UpdateTrangThaiBan(maBan, trangThai);
+            if (success)
+            {
+                MessageBox.Show("Successfully");
+            }
+            else
+                MessageBox.Show("Failed");
+        }
+
+        private void txtTienDatCoc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

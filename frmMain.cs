@@ -130,7 +130,9 @@ namespace QLNH_DBMS
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            AddControls(new frmCustomer());
+            frmCustomer frm = new frmCustomer();
+            frm.WindowState = FormWindowState.Maximized;
+            AddControls(frm);
         }
     }
 }

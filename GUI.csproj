@@ -136,35 +136,53 @@
     <Compile Include="frmProductAdd.Designer.cs">
       <DependentUpon>frmProductAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShift.designer.cs">
+      <DependentUpon>frmShift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShiftAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShiftAdd.designer.cs">
+      <DependentUpon>frmShiftAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaff.designer.cs">
+      <DependentUpon>frmStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaffDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffDetail.designer.cs">
+      <DependentUpon>frmStaffDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStatics.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmStatics.Designer.cs">
       <DependentUpon>frmStatics.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmStaff.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmStaff.Designer.cs">
-      <DependentUpon>frmStaff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmStaffAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmStaffAdd.Designer.cs">
-      <DependentUpon>frmStaffAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmTable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTable.Designer.cs">
+    <Compile Include="frmTable.designer.cs">
       <DependentUpon>frmTable.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTableAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTableAdd.Designer.cs">
+    <Compile Include="frmTableAdd.designer.cs">
       <DependentUpon>frmTableAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FWage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FWage.designer.cs">
+      <DependentUpon>FWage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -228,14 +246,29 @@
     <EmbeddedResource Include="frmProductAdd.resx">
       <DependentUpon>frmProductAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmStatics.resx">
-      <DependentUpon>frmStatics.cs</DependentUpon>
+    <EmbeddedResource Include="frmShift.resx">
+      <DependentUpon>frmShift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShiftAdd.resx">
+      <DependentUpon>frmShiftAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffDetail.resx">
+      <DependentUpon>frmStaffDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStatics.resx">
+      <DependentUpon>frmStatics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTable.resx">
       <DependentUpon>frmTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTableAdd.resx">
+      <DependentUpon>frmTableAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FWage.resx">
+      <DependentUpon>FWage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

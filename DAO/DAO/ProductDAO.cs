@@ -113,7 +113,7 @@ namespace DAO
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                err = ex.Message;
                
@@ -137,7 +137,7 @@ namespace DAO
                     return true;
                 
             }
-            catch(Exception ex)
+            catch(SqlException ex)
             {
                 err = ex.Message;
             }
@@ -149,7 +149,7 @@ namespace DAO
         }
         public bool UpdateProduct(ProductDTO productDTO, ref string err)
         {
-            string query = "pro_suaSanPham  @MaSP, @TenSP, @LoaiSP, @TinhTrang, @DonGia, @HinhAnh";
+            string query = "proc_suaSanPham  @MaSP, @TenSP, @LoaiSP, @TinhTrang, @DonGia, @HinhAnh";
             try
             {
                 MemoryStream ms = new MemoryStream();
@@ -170,7 +170,7 @@ namespace DAO
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 err = ex.Message;
             }

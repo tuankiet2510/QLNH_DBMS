@@ -43,7 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerDAO.cs" />
+    <Compile Include="EmployeeDAO.cs" />
+    <Compile Include="JobDAO.cs" />
     <Compile Include="ProductDAO.cs" />
+    <Compile Include="ShiftDAO.cs" />
+    <Compile Include="TableDAO.cs" />
     <Compile Include="UserDAO.cs" />
     <Compile Include="DBConnect\getConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

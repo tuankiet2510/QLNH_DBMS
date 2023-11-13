@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class frmStaffAdd : Form
+    public partial class FWage : Form
     {
-        public frmStaffAdd()
+        public FWage(DataTable dt)
         {
-            InitializeComponent();
+            dgvWage.DataSource = dt;
         }
     }
 }

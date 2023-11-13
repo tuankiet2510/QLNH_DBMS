@@ -121,7 +121,7 @@ namespace GUI
                          int.Parse(dgvCustomer.CurrentRow.Cells["dgvDiem"].Value.ToString()));
                     this.Close();
                 }
-                //LẤY RA customerDTO chuyển qua form POS
+                //LẤY RA customerDTO truyền vào  form POS
             }
         }
 

@@ -31,7 +31,7 @@ namespace QLNH_DBMS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtProductID.Text.Trim() == "" || txtProductName.Text.Trim() == "" || txtPrice.Text.Trim() == "" || txtImage.Image == null)
+            if (txtProductID.Text.Trim() == "" || txtProductName.Text.Trim() == "" || cbbCategory.Text.Trim() == "" || txtPrice.Text.Trim() == "" || txtImage.Image == null)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin!!!");
                 return;
@@ -45,7 +45,7 @@ namespace QLNH_DBMS
                     string[] splitValues = displayValue.Split('-');
                     string madm = splitValues[0];
                     string tendm = splitValues[1];*/
-                    productDTO = new ProductDTO(txtProductID.Text, txtProductName.Text, txtCategory.Text, cbbState.Text, float.Parse(txtPrice.Text), txtImage.Image);
+                    productDTO = new ProductDTO(txtProductID.Text, txtProductName.Text, cbbCategory.Text, cbbState.Text, float.Parse(txtPrice.Text), txtImage.Image);
                     if (productbus.updateProduct(productDTO))
                     {
                         MessageBox.Show("Đã sửa xong!");
@@ -65,7 +65,7 @@ namespace QLNH_DBMS
             {
                 try
                 {
-                    productDTO = new ProductDTO(txtProductID.Text, txtProductName.Text, txtCategory.Text,cbbState.Text, float.Parse(txtPrice.Text), txtImage.Image);
+                    productDTO = new ProductDTO(txtProductID.Text, txtProductName.Text, cbbCategory.Text, cbbState.Text, float.Parse(txtPrice.Text), txtImage.Image);
                     if (productbus.addProduct(productDTO))
                     {
                         MessageBox.Show("Đã thêm xong!");
@@ -97,6 +97,21 @@ namespace QLNH_DBMS
         }
 
         private void frmProductAdd_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cbbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

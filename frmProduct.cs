@@ -32,7 +32,6 @@ namespace QLNH_DBMS
                 dtSP.Clear();
                 dtSP = productBus.getAllProduct_Product();
                 dgvProduct.DataSource = dtSP;
-                
                 // Thay đổi độ rộng cột
                 dgvProduct.AutoResizeColumns();
 
@@ -49,6 +48,8 @@ namespace QLNH_DBMS
             frm.cbbCateID.ValueMember = "ID";
             frm.cbbCateID.DisplayMember = "Display";*/
             frm.txtProductID.ReadOnly = false;
+            frm.cbbCategory.DataSource = productBus.getAllCategory();
+            frm.cbbCategory.DisplayMember = "LoaiSP";
             frm.cbbState.SelectedIndex = frm.cbbState.Items.IndexOf("Còn");
             frm.ShowDialog();
             LoadData();
@@ -79,7 +80,7 @@ namespace QLNH_DBMS
 
         private void dgvProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvProduct.CurrentCell.OwningColumn.Name == "dgvEdit")
+            if (dgvProduct.CurrentCell.OwningColumn.Name == "dgvEdit") //Sửa sp
             {
                 int row = dgvProduct.CurrentCell.RowIndex;
                 frmProductAdd frm = new frmProductAdd();
@@ -97,9 +98,11 @@ namespace QLNH_DBMS
              frm.txtPrice.Text = dgvProduct.Rows[row].Cells["dgvPrice"].Value.ToString();*/
                 frm.txtProductID.Text = dgvProduct.CurrentRow.Cells["dgvMaSP"].Value.ToString();
                 frm.txtProductName.Text = dgvProduct.CurrentRow.Cells["dgvTenSP"].Value.ToString();
-                frm.txtCategory.Text = dgvProduct.CurrentRow.Cells["dgvCategory"].Value.ToString();
-                //frm.txtState.Text = dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString();
-                frm.cbbState.Text = dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString();
+                frm.cbbCategory.SelectedIndex = frm.cbbState.Items.IndexOf(dgvProduct.CurrentRow.Cells["dgvCategory"].Value.ToString());
+                // frm.txtCategory.Text = dgvProduct.CurrentRow.Cells["dgvCategory"].Value.ToString();
+
+                //frm.cbbState.Text = dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString();
+                frm.cbbState.SelectedIndex = frm.cbbState.Items.IndexOf(dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString());
                 frm.txtPrice.Text = dgvProduct.CurrentRow.Cells["dgvPrice"].Value.ToString();
              
                 frm.txtProductID.ReadOnly = true; //Chỉnh sửa
