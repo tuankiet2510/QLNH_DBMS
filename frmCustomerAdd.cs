@@ -30,7 +30,7 @@ namespace GUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtCustomerID.Text.Trim() == "" || txtCustomerName.Text.Trim() == "" || txtCustomerPhone.Text.Trim() == ""  || txtCustomerLoyaltyPoint.Text.Trim() == "")
+            if (txtCustomerID.Text.Trim() == "" || txtCustomerName.Text.Trim() == "" || txtCustomerLoyaltyPoint.Text.Trim() == "")
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin!!!");
                 return;
@@ -50,15 +50,18 @@ namespace GUI
             }
             else //thêm khách hàng
             {
+               
+                    if (customerBUS.addCustomer(customerDTO))
+                    {
+                        MessageBox.Show("Đã thêm xong!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm không thành công. Lỗi: '" + customerBUS.err + "'");
 
-                if (customerBUS.addCustomer(customerDTO))
-                {
-                    MessageBox.Show("Đã thêm xong!");
                 }
-                else
-                {
-                    MessageBox.Show("Thêm không thành công. Lỗi: '" + customerBUS.err + "'");
-                }
+              
+               
 
             }
             this.Close();

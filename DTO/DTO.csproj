@@ -49,7 +49,6 @@
     <Compile Include="ProductDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShiftDTO.cs" />
-    <Compile Include="Table.cs" />
     <Compile Include="TableDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

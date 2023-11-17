@@ -542,17 +542,17 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private Guna.UI2.WinForms.Guna2TextBox txtHoNV;
-        private Guna.UI2.WinForms.Guna2TextBox txtTenNV;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpNgaySinh;
-        private Guna.UI2.WinForms.Guna2TextBox txtSDT;
-        private Guna.UI2.WinForms.Guna2TextBox txtMaCV;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpNgayTD;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbHinhThuc;
+        public Guna.UI2.WinForms.Guna2TextBox txtHoNV;
+        public Guna.UI2.WinForms.Guna2TextBox txtTenNV;
+        public Guna.UI2.WinForms.Guna2DateTimePicker dtpNgaySinh;
+        public Guna.UI2.WinForms.Guna2TextBox txtSDT;
+        public Guna.UI2.WinForms.Guna2TextBox txtMaCV;
+        public Guna.UI2.WinForms.Guna2DateTimePicker dtpNgayTD;
+        public Guna.UI2.WinForms.Guna2ComboBox cmbHinhThuc;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private Guna.UI2.WinForms.Guna2TextBox txtSoCa;
-        private Guna.UI2.WinForms.Guna2TextBox txtThuong;
+        public Guna.UI2.WinForms.Guna2TextBox txtSoCa;
+        public Guna.UI2.WinForms.Guna2TextBox txtThuong;
         public Guna.UI2.WinForms.Guna2TextBox txtMaNV;
        public Guna.UI2.WinForms.Guna2ComboBox cbbMaCV;
     }

@@ -302,9 +302,6 @@
             this.cbbState.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.cbbState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbbState.ItemHeight = 32;
-            this.cbbState.Items.AddRange(new object[] {
-            "Còn",
-            "Hết"});
             this.cbbState.Location = new System.Drawing.Point(234, 417);
             this.cbbState.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbbState.Name = "cbbState";

@@ -14,11 +14,16 @@ namespace GUI
 {
     public partial class frmTable : Form
     {
-        TableBUS tableBus = new TableBUS();
+        TableBUS tableBus;
         DataTable dtTable = null;
         public frmTable()
         {
             InitializeComponent();
+            tableBus = new TableBUS();
+            /*dgvTable.Columns["dgvTienDatCoc"].ValueType = typeof(int);
+            dgvTable.Columns["dgvMaKH"].ValueType = typeof(string);
+            dgvTable.Columns["dgvTienDatCoc"].DefaultCellStyle.NullValue = DBNull.Value;
+            dgvTable.Columns["dgvMaKH"].DefaultCellStyle.NullValue = DBNull.Value;*/
         }
 
         public void LoadData()
@@ -35,7 +40,7 @@ namespace GUI
             }
             catch (SqlException e)
             {
-                MessageBox.Show("Không lấy được nội dung trong table SANPHAM. Lỗi: " + e);
+                MessageBox.Show("Không lấy được nội dung trong table SANPHAM. Lỗi: " + e.Message);
             }
         }
 
@@ -55,8 +60,68 @@ namespace GUI
             else
             {
                 frmTableAdd frmTableAdd = new frmTableAdd(selectedMaBan);
+              //  frmTableAdd.cbTrangThai.SelectedIndex = frmTableAdd.cbTrangThai.Items.IndexOf()
                 frmTableAdd.ShowDialog();
             }
+        }
+
+        private void dgvTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvTable.CurrentCell.OwningColumn.Name == "dgvEdit")
+            {
+                frmTableInsert frm = new frmTableInsert();
+                frm.txtTableID.ReadOnly = true;
+                /*List<string> listTstate = new List<string>();
+                listTstate.Add("Còn trống");
+                listTstate.Add("Đã đặt");
+                listTstate.Add("Đang dùng");
+                frm.cbbTstate.DataSource = listTstate;*/
+                frm.txtTableID.Text = dgvTable.CurrentRow.Cells["dgvMaBan"].Value.ToString();
+                frm.txtTienDatCoc.Text = dgvTable.CurrentRow.Cells["dgvTienDatCoc"].Value.ToString();
+                frm.cbbTstate.Text = dgvTable.CurrentRow.Cells["dgvTrangThai"].Value.ToString();
+                frm.txtKH.Text = dgvTable.CurrentRow.Cells["dgvMaKH"].Value.ToString();
+                frm.ShowDialog();
+                if (txtSearchTable.Text != "")
+                {
+                    dgvTable.DataSource = tableBus.FindTableByID(txtSearchTable.Text);
+                }
+                else
+                {
+                    LoadData();
+                }
+            }
+            else if (dgvTable.CurrentCell.OwningColumn.Name == "dgvDel")
+            {
+                DialogResult result = MessageBox.Show("Bạn có muốn xoá dòng này không?", "Câu hỏi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    if (tableBus.DeleteTableByID(dgvTable.CurrentRow.Cells["dgvTid"].Value.ToString()))
+                    {
+
+                        txtSearchTable.Text = "";
+                        LoadData();
+                        MessageBox.Show("Xoá thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xoá không thành công. Lỗi: '" + tableBus.err + "'");
+                    }
+                }
+
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmTableInsert frm = new frmTableInsert();
+            frm.txtTableID.ReadOnly = false;
+            //frm.txtTableName.ReadOnly = false;
+           /* List<string> listTstate = new List<string>();
+            listTstate.Add("Bàn trống");
+            listTstate.Add("Đã đặt");
+            frm.cbbTstate.DataSource = listTstate;*/
+            frm.ShowDialog();
+            LoadData();
         }
     }
 }

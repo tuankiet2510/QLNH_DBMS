@@ -63,6 +63,16 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _677252 {
+            get {
+                object obj = ResourceManager.GetObject("677252", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_button {
             get {
                 object obj = ResourceManager.GetObject("add-button", resourceCulture);
@@ -153,6 +163,16 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_minus_80 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-minus-80", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_new_ticket_80 {
             get {
                 object obj = ResourceManager.GetObject("icons8-new-ticket-80", resourceCulture);
@@ -176,6 +196,16 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap icons8_report_64__1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-report-64 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_waiter_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-waiter-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

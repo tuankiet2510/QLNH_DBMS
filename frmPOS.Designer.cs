@@ -37,10 +37,14 @@
             this.guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.DTPTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.DPTDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.lblTable = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnKOT = new Guna.UI2.WinForms.Guna2TileButton();
             this.lblWaiter = new System.Windows.Forms.Label();
+            this.lblTable = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblCustomer = new System.Windows.Forms.Label();
+            this.btnKOT = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnBillList = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnNew = new Guna.UI2.WinForms.Guna2TileButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -104,7 +108,7 @@
             this.DTPTime.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.DTPTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.DTPTime.HoverState.FillColor = System.Drawing.Color.Red;
-            this.DTPTime.Location = new System.Drawing.Point(1003, 69);
+            this.DTPTime.Location = new System.Drawing.Point(952, 64);
             this.DTPTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DTPTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DTPTime.Name = "DTPTime";
@@ -125,7 +129,7 @@
             this.DPTDate.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.DPTDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DPTDate.HoverState.FillColor = System.Drawing.Color.Red;
-            this.DPTDate.Location = new System.Drawing.Point(1003, 13);
+            this.DPTDate.Location = new System.Drawing.Point(952, 12);
             this.DPTDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DPTDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DPTDate.Name = "DPTDate";
@@ -134,25 +138,17 @@
             this.DPTDate.UseTransparentBackground = true;
             this.DPTDate.Value = new System.DateTime(2023, 6, 2, 9, 24, 5, 454);
             // 
-            // lblTable
-            // 
-            this.lblTable.AutoSize = true;
-            this.lblTable.BackColor = System.Drawing.Color.Transparent;
-            this.lblTable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTable.ForeColor = System.Drawing.Color.White;
-            this.lblTable.Location = new System.Drawing.Point(1236, 13);
-            this.lblTable.Name = "lblTable";
-            this.lblTable.Size = new System.Drawing.Size(69, 32);
-            this.lblTable.TabIndex = 4;
-            this.lblTable.Text = "Table";
-            // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.lblWaiter);
+            this.guna2Panel1.Controls.Add(this.lblTable);
+            this.guna2Panel1.Controls.Add(this.label5);
+            this.guna2Panel1.Controls.Add(this.label4);
+            this.guna2Panel1.Controls.Add(this.label3);
+            this.guna2Panel1.Controls.Add(this.lblCustomer);
             this.guna2Panel1.Controls.Add(this.btnKOT);
             this.guna2Panel1.Controls.Add(this.DTPTime);
             this.guna2Panel1.Controls.Add(this.DPTDate);
-            this.guna2Panel1.Controls.Add(this.lblTable);
-            this.guna2Panel1.Controls.Add(this.lblWaiter);
             this.guna2Panel1.Controls.Add(this.btnBillList);
             this.guna2Panel1.Controls.Add(this.btnNew);
             this.guna2Panel1.Controls.Add(this.label1);
@@ -163,6 +159,78 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1744, 118);
             this.guna2Panel1.TabIndex = 20;
+            // 
+            // lblWaiter
+            // 
+            this.lblWaiter.AutoSize = true;
+            this.lblWaiter.BackColor = System.Drawing.Color.Transparent;
+            this.lblWaiter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWaiter.ForeColor = System.Drawing.Color.White;
+            this.lblWaiter.Location = new System.Drawing.Point(1326, 51);
+            this.lblWaiter.Name = "lblWaiter";
+            this.lblWaiter.Size = new System.Drawing.Size(82, 32);
+            this.lblWaiter.TabIndex = 14;
+            this.lblWaiter.Text = "Waiter";
+            // 
+            // lblTable
+            // 
+            this.lblTable.AutoSize = true;
+            this.lblTable.BackColor = System.Drawing.Color.Transparent;
+            this.lblTable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTable.ForeColor = System.Drawing.Color.White;
+            this.lblTable.Location = new System.Drawing.Point(1326, 6);
+            this.lblTable.Name = "lblTable";
+            this.lblTable.Size = new System.Drawing.Size(69, 32);
+            this.lblTable.TabIndex = 13;
+            this.lblTable.Text = "Table";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(1148, 83);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 32);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Khách hàng";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(1148, 46);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 32);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Phục vụ\r\n";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(1148, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 32);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Bàn:";
+            // 
+            // lblCustomer
+            // 
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.BackColor = System.Drawing.Color.Transparent;
+            this.lblCustomer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomer.ForeColor = System.Drawing.Color.White;
+            this.lblCustomer.Location = new System.Drawing.Point(1326, 83);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(117, 32);
+            this.lblCustomer.TabIndex = 9;
+            this.lblCustomer.Text = "Customer";
             // 
             // btnKOT
             // 
@@ -187,18 +255,6 @@
             this.btnKOT.Text = "KOT";
             this.btnKOT.UseTransparentBackground = true;
             this.btnKOT.Click += new System.EventHandler(this.btnKOT_Click);
-            // 
-            // lblWaiter
-            // 
-            this.lblWaiter.AutoSize = true;
-            this.lblWaiter.BackColor = System.Drawing.Color.Transparent;
-            this.lblWaiter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWaiter.ForeColor = System.Drawing.Color.White;
-            this.lblWaiter.Location = new System.Drawing.Point(1236, 78);
-            this.lblWaiter.Name = "lblWaiter";
-            this.lblWaiter.Size = new System.Drawing.Size(82, 32);
-            this.lblWaiter.TabIndex = 4;
-            this.lblWaiter.Text = "Waiter";
             // 
             // btnBillList
             // 
@@ -460,6 +516,7 @@
             this.dgvPOS.ThemeStyle.RowsStyle.Height = 35;
             this.dgvPOS.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvPOS.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvPOS.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPOS_CellClick);
             // 
             // dgvDetailID
             // 
@@ -515,6 +572,7 @@
             this.dgvDecrease.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dgvDecrease.FillWeight = 50F;
             this.dgvDecrease.HeaderText = "";
+            this.dgvDecrease.Image = global::GUI.Properties.Resources.icons8_minus_80;
             this.dgvDecrease.MinimumWidth = 50;
             this.dgvDecrease.Name = "dgvDecrease";
             this.dgvDecrease.ReadOnly = true;
@@ -526,6 +584,7 @@
             this.dgvDel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dgvDel.FillWeight = 50F;
             this.dgvDel.HeaderText = "";
+            this.dgvDel.Image = global::GUI.Properties.Resources.delete;
             this.dgvDel.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dgvDel.MinimumWidth = 50;
             this.dgvDel.Name = "dgvDel";
@@ -600,9 +659,7 @@
         private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
         private Guna.UI2.WinForms.Guna2DateTimePicker DTPTime;
         private Guna.UI2.WinForms.Guna2DateTimePicker DPTDate;
-        private System.Windows.Forms.Label lblTable;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label lblWaiter;
         private Guna.UI2.WinForms.Guna2TileButton btnBillList;
         private Guna.UI2.WinForms.Guna2TileButton btnNew;
         private System.Windows.Forms.Label label1;
@@ -616,6 +673,14 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.FlowLayoutPanel pnlProduct;
         private Guna.UI2.WinForms.Guna2DataGridView dgvPOS;
+        private System.Windows.Forms.FlowLayoutPanel pnlCategory;
+        private Guna.UI2.WinForms.Guna2TileButton btnKOT;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCustomer;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblWaiter;
+        private System.Windows.Forms.Label lblTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvDetailID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTenSP;
@@ -624,7 +689,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvAmount;
         private System.Windows.Forms.DataGridViewImageColumn dgvDecrease;
         private System.Windows.Forms.DataGridViewImageColumn dgvDel;
-        private System.Windows.Forms.FlowLayoutPanel pnlCategory;
-        private Guna.UI2.WinForms.Guna2TileButton btnKOT;
     }
 }

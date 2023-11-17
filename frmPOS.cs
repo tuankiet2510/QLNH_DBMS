@@ -1,6 +1,8 @@
 ﻿using BUS;
 using DTO;
+using GUI.Select;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -14,7 +16,6 @@ namespace GUI
 
         public int MainID = 0;
         public string OrderType = "";
-        public string TableName = "";
         public string TableID = "";
         public DateTime Date;
         public DateTime Time;
@@ -25,8 +26,11 @@ namespace GUI
         DataTable dtDM;
         DataTable dtSP;
         ProductBUS productBus;
+        int tiencoc;
         double total;
         public bool Them = true; // CHo khởi tạo ban đầu bằng true 
+        bool start = false;
+        List<String> listProstate;
         CustomerDTO customerDTO;
         public frmPOS()
         {
@@ -34,6 +38,10 @@ namespace GUI
             productBus = new ProductBUS();
             this.Controls.Add(hScrollBar1);
             customerDTO = new CustomerDTO();
+            listProstate = new List<String>();
+            listProstate.Add("Còn");
+            listProstate.Add("Hết");
+
         }
         private void GetCategory()
         {
@@ -67,6 +75,7 @@ namespace GUI
                         //event for click
                         b.Click += new EventHandler(_Click);
                         pnlCategory.Controls.Add(b);
+                        
                     }
                 }
                 else
@@ -89,6 +98,7 @@ namespace GUI
                 {
                     var pro = (ucProduct)item;
                     pro.Visible = true; // Hiển thị tất cả các sản phẩm
+                    
                 }
             }
             else // Lọc lấy các sản phẩm theo tên danh mục vd đồ ăn nhanh , món chính , rượu , bia
@@ -128,13 +138,14 @@ namespace GUI
                 dtSP = new DataTable();
                 dtSP.Clear();
 
-                dtSP = productBus.  getAllProduct_POS();
+                dtSP = productBus.getAllProduct_POS();
 
                 foreach (DataRow item in dtSP.Rows)
                 {
                     Byte[] imagearray = (byte[])item["AnhSP"];
                     byte[] imagebytearray = imagearray;
-                    AddItems(item["MaSP"].ToString(), item["TenSP"].ToString(), item["LoaiSP"].ToString(), float.Parse(item["DonGia"].ToString()), Image.FromStream(new MemoryStream(imagearray)));
+                    
+                    AddItems(item["MaSP"].ToString(), item["TenSP"].ToString(), item["LoaiSP"].ToString(), item["TinhTrang"].ToString(), float.Parse(item["DonGia"].ToString()), Image.FromStream(new MemoryStream(imagearray)));
                 }
             }
             catch (SqlException ex)
@@ -143,16 +154,23 @@ namespace GUI
             }
         }
 
-        private void AddItems(string id, string name, string cat, float price, Image pimage)
+        private void AddItems(string id, string name, string cat,string state, float price, Image pimage)
         {
             var w = new ucProduct()
             {
                 PName = name, //Tên sản phẩm
                 PPrice = price, //Gía
                 PCategory = cat, // Tên loại sp ( Tên Danh mục)
+                PState = state,
                 PImage = pimage,
                 PId = id // Mã sp
+
             };
+            if (w.PState.Equals(listProstate[1])) //Hết hàng
+            {
+                w.Enabled = false;
+                w.guna2ShadowPanel1.FillColor = Color.DimGray;
+            }
             pnlProduct.Controls.Add(w);
 
             //Nhấn vào ucProdcut bất kỳ sẽ đưa sản phẩm đó lên dgvPOS
@@ -181,11 +199,6 @@ namespace GUI
                     //Add new Product
 
                 }
-             
-                //Đưa dữ liệu ( sản phẩm) vừa bấm lên dgvPOS
-                //   dgvPOS.Rows.Add(new object[] { wdg.PId, wdg.PName, wdg.PCategory, 1, wdg.PPrice, wdg.PPrice });
-                //Tác dụng của PCategory trong form này chỉ có duy nhất để visible các sản phẩm theo tên danh mục ứng với button ấn vào
-                //       s = false;
                 dgvPOS.Rows.Add(new object[] { 0, wdg.PId, wdg.PName, 1, wdg.PPrice, wdg.PPrice });
                 //Số 0 đầu tiên là DetailID , ta mặc định khi ấn chọn sản phẩm , DetailID đưa lên dgvPOS là 0 nhưng 0 qtrong lắm , vì khi chỉnh sửa là lúc database trong tblDetails đổ xuốngdgvPOS 
                 //Gía trị trong cột dgvDetailID của dgvPOS sẽ trở nên khác ( vì trong tblDetails , cột DetailID là Indetity nên tự động sinh giá trị mỗi khi thêm record
@@ -231,6 +244,7 @@ namespace GUI
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            start = true;
             lblTable.Text = "";
             lblWaiter.Text = "";
             lblTable.Visible = false;
@@ -242,9 +256,19 @@ namespace GUI
             frmCustomer frmCus = new frmCustomer();
             frmCus.ShowDialog();
             customerDTO = frmCus.customerDTO;
-            
+            lblCustomer.Text = customerDTO.Id;
+            frmTableSelect frmTableSelect = new frmTableSelect();
+            frmTableSelect.txtMaKH.Text = customerDTO.Id;
+            frmTableSelect.ShowDialog();
+            lblTable.Text = frmTableSelect.TableID;
+            lblTable.Visible = true;
+            TableID = frmTableSelect.TableID;
+            frmWaiterSelect frmWaiter = new frmWaiterSelect();
+            frmWaiter.ShowDialog();
+            lblWaiter.Text = frmWaiter.WaiterName;
+            lblWaiter.Tag = frmWaiter.WaiterID;
+            lblWaiter.Visible = true;
         }
-
         private void btnBillList_Click(object sender, EventArgs e)
         {
             frmPOSBillList frm = new frmPOSBillList();
@@ -336,6 +360,61 @@ namespace GUI
         private void btnHold_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvPOS_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvPOS.CurrentCell.OwningColumn.Name == "dgvDecrease")
+                {
+                    if (dgvPOS.CurrentRow != null && dgvPOS.CurrentRow.Cells["dgvQty"].Value != null)
+                    {
+                        if (uint.TryParse(dgvPOS.CurrentRow.Cells["dgvQty"].Value.ToString(), out uint currentQty))
+                        {
+                            if (currentQty > 1)
+                            {
+                                dgvPOS.CurrentRow.Cells["dgvQty"].Value = currentQty - 1;
+                                dgvPOS.CurrentRow.Cells["dgvAmount"].Value = Convert.ToDouble(dgvPOS.CurrentRow.Cells["dgvQty"].Value) * Convert.ToDouble(dgvPOS.CurrentRow.Cells["dgvPrice"].Value);
+                                GetTotal();
+                            }
+                            else if (currentQty == 1)
+                            {
+                                dgvPOS.Rows.RemoveAt(dgvPOS.CurrentCell.RowIndex);
+                                MessageBox.Show("Xoá thành công!");
+                            }
+                        }
+                        else
+                        {
+                            // Xử lý khi giá trị không phải số
+                            MessageBox.Show("Giá trị không hợp lệ.");
+                        }
+                    }
+                    else
+                    {
+                        // Xử lý khi hàng hiện tại hoặc giá trị cột là null
+                        MessageBox.Show("Không có hàng hoặc giá trị cột.");
+                    }
+
+                }
+                else if (dgvPOS.CurrentCell.OwningColumn.Name == "dgvDel")
+                {
+                    DialogResult result = MessageBox.Show("Bạn có muốn xoá ?", "Câu hỏi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        /*dbSP.XoaSanPham(dgvPOS.CurrentRow.Cells["dgvMaSP"].Value.ToString(), ref err);
+                        LoadData();*/
+                        dgvPOS.Rows.RemoveAt(dgvPOS.CurrentCell.RowIndex);
+                        MessageBox.Show("Xoá thành công!");
+
+                    }
+                }
+                GetTotal();
+            }
+            catch (SqlException err)
+            {
+                MessageBox.Show("Không xóa được. Lỗi rồi!" + err.Message);
+            }
         }
     }
 }

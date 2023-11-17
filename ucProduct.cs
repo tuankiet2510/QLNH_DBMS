@@ -20,7 +20,7 @@ namespace GUI
         public string PId { get; set; }
         public float PPrice { get; set; }
         public string PCategory { get; set; } // Tên Danh mục
-
+        public string PState { get;set; }
         public string PName
         {
             get { return lblName.Text; }

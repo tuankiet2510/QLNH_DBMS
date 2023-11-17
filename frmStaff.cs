@@ -17,6 +17,7 @@ namespace GUI
         public EmployeeBUS employeeBUS;
         public EmployeeDTO employeeDTO;
         public JobBUS jobBUS;
+        
         public frmStaff()
         {
             InitializeComponent();
@@ -82,7 +83,7 @@ namespace GUI
             if (dt.Rows.Count > 0)
             {
                 MessageBox.Show("Tìm thành công");
-                Load_data(dt);
+                Load_data();
             }
             else
             {
@@ -92,16 +93,16 @@ namespace GUI
 
         private void frmStaff_Load(object sender, EventArgs e)
         {
-            Load_data(employeeBUS.getAllEmployee());
+            Load_data();
         }
 
-        private void Load_data(DataTable temp)
+        private void Load_data()
         {
             try
             {
                 DataTable dt = new DataTable();
                 dt.Clear();
-                dt = temp;
+                dt = employeeBUS.getAllEmployee();
                 dgvStaff.DataSource = dt;
                 dgvStaff.AutoResizeColumns();
             }
@@ -117,6 +118,54 @@ namespace GUI
             dt = employeeBUS.CalWageEmployee();
             FWage fwage = new FWage(dt);
             fwage.Show();
+        }
+
+        private void dgvStaff_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (dgvStaff.CurrentCell.OwningColumn.Name == "dgvEdit")
+            {
+                frmStaffDetail frm = new frmStaffDetail();
+                frm.txtMaNV.ReadOnly = true;
+                frm.txtMaNV.Text = dgvStaff.CurrentRow.Cells["dgvManv"].Value.ToString();
+                frm.txtHoNV.Text = dgvStaff.CurrentRow.Cells["dgvHoNV"].Value.ToString();
+                frm.txtTenNV.Text = dgvStaff.CurrentRow.Cells["dgvTenNV"].Value.ToString();
+                frm.dtpNgaySinh.Value = (DateTime)dgvStaff.CurrentRow.Cells["dgvNgaySinh"].Value;
+                frm.txtSDT.Text = dgvStaff.CurrentRow.Cells["dgvSDT"].Value.ToString();
+                frm.txtMaCV.Text = dgvStaff.CurrentRow.Cells["dgvMaCV"].Value.ToString();
+                frm.txtSoCa.Text = dgvStaff.CurrentRow.Cells["dgvSoCa"].Value.ToString();
+                frm.txtThuong.Text = dgvStaff.CurrentRow.Cells["dgvThuong"].Value.ToString();
+                frm.dtpNgayTD.Value = (DateTime)dgvStaff.CurrentRow.Cells["dgvNgayTuyenDung"].Value;
+                frm.cmbHinhThuc.SelectedIndex = frm.cmbHinhThuc.Items.IndexOf(dgvStaff.CurrentRow.Cells["dgvHTCongViec"].Value.ToString());
+                frm.ShowDialog();
+                if (txtSearchStaff.Text != "")
+                {
+                    //dgvStaff.DataSource = employeeBUS.searchEmployee(txtSearchStaff.Text);
+                }
+                else
+                {
+                    Load_data();
+                }
+            }
+            else if (dgvStaff.CurrentCell.OwningColumn.Name == "dgvDel")
+            {
+                DialogResult result = MessageBox.Show("Bạn có muốn xoá dòng này không?", "Câu hỏi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    //Chú ý ở đây cần thực hiện thêm việc xóa tài khoản theo Manv
+                    if (employeeBUS.deleteEmployee(dgvStaff.CurrentRow.Cells["dgvManv"].Value.ToString()))
+                    {
+                        txtSearchStaff.Text = "";
+                        Load_data();
+                        MessageBox.Show("Xoá thành công!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xoá không thành công. Lỗi: '" + employeeBUS.err + "'");
+                    }
+                }
+            }
+
         }
     }
 }

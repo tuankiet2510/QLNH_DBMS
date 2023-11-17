@@ -32,6 +32,10 @@ namespace BUS
         {
             return employeeDAO.CalWageEmployee();
         }
+        public DataTable getAllWaiter()
+        {
+            return employeeDAO.getAllWaiter();
+        }
         public bool addEmployee(EmployeeDTO employeeDTO)
         {
             return employeeDAO.Add_Employee(employeeDTO);
@@ -46,5 +50,10 @@ namespace BUS
         {
             return employeeDAO.Delete_Employee(employeeDTO);
         }
+        public bool deleteEmployee(string id)
+        {
+            return employeeDAO.Delete_Employee(id, ref err);
+        }
+
     }
 }

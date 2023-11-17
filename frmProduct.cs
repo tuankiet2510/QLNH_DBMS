@@ -34,11 +34,10 @@ namespace QLNH_DBMS
                 dgvProduct.DataSource = dtSP;
                 // Thay đổi độ rộng cột
                 dgvProduct.AutoResizeColumns();
-
             }
             catch (SqlException e)
             {
-                MessageBox.Show("Không lấy được nội dung trong table SANPHAM. Lỗi: " + e);
+                MessageBox.Show("Không lấy được nội dung trong table SANPHAM. Lỗi: " + e.Message);
             }
         }
         private void btnAdd_Click(object sender, EventArgs e)

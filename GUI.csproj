@@ -160,6 +160,12 @@
     <Compile Include="frmStaffDetail.designer.cs">
       <DependentUpon>frmStaffDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTableInsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTableInsert.Designer.cs">
+      <DependentUpon>frmTableInsert.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStatics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,9 @@
     <EmbeddedResource Include="frmStaffDetail.resx">
       <DependentUpon>frmStaffDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTableInsert.resx">
+      <DependentUpon>frmTableInsert.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmStatics.resx">
       <DependentUpon>frmStatics.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,6 +291,9 @@
     </Compile>
     <EmbeddedResource Include="Select\frmTableSelect.resx">
       <DependentUpon>frmTableSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Select\frmWaiterSelect.resx">
+      <DependentUpon>frmWaiterSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucProduct.resx">
       <DependentUpon>ucProduct.cs</DependentUpon>
@@ -438,6 +450,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\select_icon-icons.com_48233.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-waiter-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\677252.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-minus-80.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

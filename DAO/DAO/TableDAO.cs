@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using DAO.DBConnect;
 using DTO;
 
@@ -13,13 +14,16 @@ namespace DAO
 {
     public class TableDAO
     {
-        public TableDAO() { }
+        DataTable dtTable;
+        SqlConnection con;
+        public TableDAO(string role=null) {
+            con = getConnection.GetSqlConnection();
+        }
         public DataTable GetAllTables()
         {
-            DataTable dtTable = new DataTable();
-
-            string query = "SELECT * FROM BAN";
-            SqlConnection con = getConnection.GetSqlConnection();
+            dtTable = new DataTable();
+            dtTable.Clear();
+            string query = "SELECT * FROM  V_BAN";
             con.Open();
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             con.Close();
@@ -35,10 +39,9 @@ namespace DAO
             }
             return dtTable;
         }
-        public bool UpdateTrangThaiBan(string maBan, string trangThai)
+        /*public bool UpdateTrangThaiBan(string maBan, string trangThai, ref string err)
         {
             string queryInsert = "proc_UpdateTrangThaiBan @MaBan, @TrangThai";
-            SqlConnection con = getConnection.GetSqlConnection();
             try
             {
                 con.Open();
@@ -53,7 +56,36 @@ namespace DAO
             }
             catch (Exception ex)
             {
+                err = ex.Message;
                 throw(ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return false;
+        }*/
+        public bool UpdateTrangThaiBan(TableDTO tableDTO, ref string err)
+        {
+            string queryInsert = "proc_UpdateTrangThaiBan @MaBan, @TrangThai,@TienDatCoc,@MaKH";
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(queryInsert, con);
+                cmd.Parameters.AddRange(new[]
+                {
+                    new SqlParameter("@MaBan", tableDTO.Id),
+                    new SqlParameter("@TrangThai", tableDTO.Status),
+                    new SqlParameter("@TienDatCoc", (object)tableDTO.Deposit ?? DBNull.Value),
+                    new SqlParameter("@MaKH", (object)tableDTO.CustomerId ?? DBNull.Value)
+                });
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (SqlException ex)
+            {
+                err = ex.Message;
+              //  throw (ex);
             }
             finally
             {
@@ -75,7 +107,7 @@ namespace DAO
                     new SqlParameter("@TenSP", trangThai),
                 });
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 throw (ex);
             }
@@ -83,6 +115,78 @@ namespace DAO
             {
                 con.Close();
             }
+        }
+        public bool AddTable(TableDTO tableDTO, ref string err)
+        {
+            string queryInsert = "proc_ThemBan @MaBan, @TrangThai, @TienDatCoc,@MaKH";
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(queryInsert, con);
+                
+                cmd.Parameters.AddRange(new[]
+                {
+                    new SqlParameter("@MaBan", tableDTO.Id),
+                    new SqlParameter("@TrangThai", tableDTO.Status),
+                    new SqlParameter("@TienDatCoc", (object)tableDTO.Deposit ?? DBNull.Value),
+                    new SqlParameter("@MaKH", (object)tableDTO.CustomerId ?? DBNull.Value)
+                });
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+            }
+            catch (SqlException ex)
+            {
+                err = ex.Message;
+               // throw (ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return false;
+        }
+        public DataTable FindTableByID(string id)
+        {
+
+            dtTable = new DataTable();
+            string func_name = "func_findTableByID";
+            string queryView = $"SELECT * FROM {func_name} (@string)";
+            //SqlConnection con = getConnection.GetSqlConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(queryView, con);
+
+            cmd.Parameters.AddWithValue("@string", id);
+
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            dtTable.Clear();
+            sda.Fill(dtTable);
+
+            con.Close();
+            return dtTable;
+        }
+        public bool RemoveTable(string id, ref string err)
+        {
+
+            string queryDelete = "proc_xoaBan @MaBan";
+            //SqlConnection conn = getConnection.GetSqlConnection();
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(queryDelete, con);
+                cmd.Parameters.AddWithValue("@MaBan", id);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+
+            }
+            catch (SqlException ex)
+            {
+                err = ex.Message;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return false;
         }
     }
 }

@@ -308,6 +308,6 @@
         public Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnClose;
-        private Guna.UI2.WinForms.Guna2ComboBox cbTrangThai;
+        public Guna.UI2.WinForms.Guna2ComboBox cbTrangThai;
     }
 }

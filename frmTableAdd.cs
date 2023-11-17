@@ -33,14 +33,14 @@ namespace GUI
             string trangThai = cbTrangThai.Text;
             int tienDatCoc = Int32.Parse(txtTienDatCoc.Text ?? "0");
             string maKH = txtKH.Text;
-
+/*
             bool success = tableBus.UpdateTrangThaiBan(maBan, trangThai);
             if (success)
             {
                 MessageBox.Show("Successfully");
             }
             else
-                MessageBox.Show("Failed");
+                MessageBox.Show(tableBus.err);*/
         }
 
         private void txtTienDatCoc_KeyPress(object sender, KeyPressEventArgs e)

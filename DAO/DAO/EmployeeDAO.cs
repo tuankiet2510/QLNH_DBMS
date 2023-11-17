@@ -33,6 +33,18 @@ namespace DAO
             }
             return dt;
         }
+        public DataTable getAllWaiter()
+        {
+            string query = "SELECT * FROM V_PhucVu";
+       
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            con.Close();
+            DataTable dtcategory = new DataTable();
+            sda.Fill(dtcategory);
+
+            return dtcategory;
+        }
 
         public DataTable searchEmployee(EmployeeDTO employee, string type)
         {
@@ -166,6 +178,29 @@ namespace DAO
                 con.Close();
                 return false;
             }
+        }
+        public bool Delete_Employee(string id, ref string err)
+        {
+            string queryDelete = "proc_DeleteEmployee @MaNV";
+            //SqlConnection conn = getConnection.GetSqlConnection();
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(queryDelete, con);
+                cmd.Parameters.AddWithValue("@MaNV", id);
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
+
+            }
+            catch (SqlException ex)
+            {
+                err = ex.Message;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return false;
         }
     }
 }

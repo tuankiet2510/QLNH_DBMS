@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BUS;
 using DTO;
 namespace QLNH_DBMS
 {
@@ -18,11 +17,16 @@ namespace QLNH_DBMS
      
         ProductBUS productbus;
         ProductDTO productDTO;
+        List<String> listProstate;
         public frmProductAdd()
         {
             InitializeComponent();
             productbus = new ProductBUS();
             productDTO = new ProductDTO();
+            listProstate = new List<String>();
+            listProstate.Add("Còn");
+            listProstate.Add("Hết");
+            cbbState.DataSource = listProstate;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
