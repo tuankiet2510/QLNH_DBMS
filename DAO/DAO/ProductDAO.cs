@@ -24,7 +24,7 @@ namespace DAO
         }
         public DataTable GetAllCategory() //Lấy tất cả danh mục sản phẩm
         {
-            dtProduct = new DataTable();
+            //dtProduct = new DataTable();
             string queryView = "SELECT * FROM V_DanhMucSanPham";
 
             //con = getConnection.GetSqlConnection();

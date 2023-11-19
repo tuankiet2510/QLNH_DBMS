@@ -35,15 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dgvBillList = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.dgvMaBill = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvWaiter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvOrderType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dgvPrint = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -51,6 +42,17 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.dgvMaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvMaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvTrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvGiaTriHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvMaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvMaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPTTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvNgay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvGio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dgvPrint = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillList)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -90,13 +92,15 @@
             this.dgvBillList.ColumnHeadersHeight = 40;
             this.dgvBillList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvBillList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvMaBill,
-            this.dgvTable,
-            this.dgvWaiter,
-            this.dgvTime,
-            this.dgvOrderType,
-            this.dgvStatus,
-            this.dgvTotal,
+            this.dgvMaHD,
+            this.dgvMaKH,
+            this.dgvTrangThai,
+            this.dgvGiaTriHD,
+            this.dgvMaNV,
+            this.dgvMaBan,
+            this.dgvPTTT,
+            this.dgvNgay,
+            this.dgvGio,
             this.dgvEdit,
             this.dgvPrint});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -108,7 +112,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBillList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBillList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvBillList.Location = new System.Drawing.Point(48, 112);
+            this.dgvBillList.Location = new System.Drawing.Point(12, 122);
             this.dgvBillList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvBillList.Name = "dgvBillList";
             this.dgvBillList.ReadOnly = true;
@@ -125,7 +129,7 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.IndianRed;
             this.dgvBillList.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvBillList.RowTemplate.Height = 35;
-            this.dgvBillList.Size = new System.Drawing.Size(1450, 755);
+            this.dgvBillList.Size = new System.Drawing.Size(1581, 745);
             this.dgvBillList.TabIndex = 11;
             this.dgvBillList.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvBillList.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -148,86 +152,7 @@
             this.dgvBillList.ThemeStyle.RowsStyle.Height = 35;
             this.dgvBillList.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvBillList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // dgvMaBill
-            // 
-            this.dgvMaBill.DataPropertyName = "MaHD";
-            this.dgvMaBill.HeaderText = "Mã hóa đơn";
-            this.dgvMaBill.MinimumWidth = 6;
-            this.dgvMaBill.Name = "dgvMaBill";
-            this.dgvMaBill.ReadOnly = true;
-            // 
-            // dgvTable
-            // 
-            this.dgvTable.DataPropertyName = "tab";
-            this.dgvTable.HeaderText = "Mã bàn";
-            this.dgvTable.MinimumWidth = 8;
-            this.dgvTable.Name = "dgvTable";
-            this.dgvTable.ReadOnly = true;
-            // 
-            // dgvWaiter
-            // 
-            this.dgvWaiter.DataPropertyName = "WaiterName";
-            this.dgvWaiter.HeaderText = "Waiter";
-            this.dgvWaiter.MinimumWidth = 8;
-            this.dgvWaiter.Name = "dgvWaiter";
-            this.dgvWaiter.ReadOnly = true;
-            // 
-            // dgvTime
-            // 
-            this.dgvTime.DataPropertyName = "aTime";
-            this.dgvTime.HeaderText = "Time";
-            this.dgvTime.MinimumWidth = 8;
-            this.dgvTime.Name = "dgvTime";
-            this.dgvTime.ReadOnly = true;
-            // 
-            // dgvOrderType
-            // 
-            this.dgvOrderType.DataPropertyName = "orderType";
-            this.dgvOrderType.HeaderText = "OrderType";
-            this.dgvOrderType.MinimumWidth = 8;
-            this.dgvOrderType.Name = "dgvOrderType";
-            this.dgvOrderType.ReadOnly = true;
-            // 
-            // dgvStatus
-            // 
-            this.dgvStatus.DataPropertyName = "status";
-            this.dgvStatus.HeaderText = "Status";
-            this.dgvStatus.MinimumWidth = 8;
-            this.dgvStatus.Name = "dgvStatus";
-            this.dgvStatus.ReadOnly = true;
-            // 
-            // dgvTotal
-            // 
-            this.dgvTotal.DataPropertyName = "total";
-            this.dgvTotal.HeaderText = "Total";
-            this.dgvTotal.MinimumWidth = 8;
-            this.dgvTotal.Name = "dgvTotal";
-            this.dgvTotal.ReadOnly = true;
-            // 
-            // dgvEdit
-            // 
-            this.dgvEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dgvEdit.FillWeight = 50F;
-            this.dgvEdit.HeaderText = "";
-            this.dgvEdit.Image = global::GUI.Properties.Resources.edit;
-            this.dgvEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvEdit.MinimumWidth = 50;
-            this.dgvEdit.Name = "dgvEdit";
-            this.dgvEdit.ReadOnly = true;
-            this.dgvEdit.Width = 50;
-            // 
-            // dgvPrint
-            // 
-            this.dgvPrint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dgvPrint.FillWeight = 50F;
-            this.dgvPrint.HeaderText = "";
-            this.dgvPrint.Image = global::GUI.Properties.Resources.icons8_print_100;
-            this.dgvPrint.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvPrint.MinimumWidth = 50;
-            this.dgvPrint.Name = "dgvPrint";
-            this.dgvPrint.ReadOnly = true;
-            this.dgvPrint.Width = 50;
+            this.dgvBillList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBillList_CellClick);
             // 
             // btnSave
             // 
@@ -268,6 +193,7 @@
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(58, 42);
             this.guna2ControlBox1.TabIndex = 2;
+            this.guna2ControlBox1.Click += new System.EventHandler(this.guna2ControlBox1_Click);
             // 
             // lblAdd
             // 
@@ -279,7 +205,6 @@
             this.lblAdd.Size = new System.Drawing.Size(323, 37);
             this.lblAdd.TabIndex = 1;
             this.lblAdd.Text = "Danh Sách Hóa Đơn";
-            this.lblAdd.Click += new System.EventHandler(this.lblAdd_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -319,6 +244,102 @@
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
+            // dgvMaHD
+            // 
+            this.dgvMaHD.DataPropertyName = "MaHD";
+            this.dgvMaHD.HeaderText = "Mã hóa đơn";
+            this.dgvMaHD.MinimumWidth = 6;
+            this.dgvMaHD.Name = "dgvMaHD";
+            this.dgvMaHD.ReadOnly = true;
+            // 
+            // dgvMaKH
+            // 
+            this.dgvMaKH.DataPropertyName = "MaKH";
+            this.dgvMaKH.HeaderText = "Mã khách hàng";
+            this.dgvMaKH.MinimumWidth = 8;
+            this.dgvMaKH.Name = "dgvMaKH";
+            this.dgvMaKH.ReadOnly = true;
+            // 
+            // dgvTrangThai
+            // 
+            this.dgvTrangThai.DataPropertyName = "TrangThai";
+            this.dgvTrangThai.HeaderText = "Trạng thái";
+            this.dgvTrangThai.MinimumWidth = 8;
+            this.dgvTrangThai.Name = "dgvTrangThai";
+            this.dgvTrangThai.ReadOnly = true;
+            // 
+            // dgvGiaTriHD
+            // 
+            this.dgvGiaTriHD.DataPropertyName = "GiaTriHD";
+            this.dgvGiaTriHD.HeaderText = "Tổng hóa đơn";
+            this.dgvGiaTriHD.MinimumWidth = 8;
+            this.dgvGiaTriHD.Name = "dgvGiaTriHD";
+            this.dgvGiaTriHD.ReadOnly = true;
+            // 
+            // dgvMaNV
+            // 
+            this.dgvMaNV.DataPropertyName = "MaNV";
+            this.dgvMaNV.HeaderText = "Mã phục vụ";
+            this.dgvMaNV.MinimumWidth = 8;
+            this.dgvMaNV.Name = "dgvMaNV";
+            this.dgvMaNV.ReadOnly = true;
+            // 
+            // dgvMaBan
+            // 
+            this.dgvMaBan.DataPropertyName = "MaBan";
+            this.dgvMaBan.HeaderText = "Mã bàn";
+            this.dgvMaBan.MinimumWidth = 8;
+            this.dgvMaBan.Name = "dgvMaBan";
+            this.dgvMaBan.ReadOnly = true;
+            // 
+            // dgvPTTT
+            // 
+            this.dgvPTTT.DataPropertyName = "PTTT";
+            this.dgvPTTT.HeaderText = "PTTT";
+            this.dgvPTTT.MinimumWidth = 8;
+            this.dgvPTTT.Name = "dgvPTTT";
+            this.dgvPTTT.ReadOnly = true;
+            // 
+            // dgvNgay
+            // 
+            this.dgvNgay.DataPropertyName = "Ngay";
+            this.dgvNgay.HeaderText = "Ngày";
+            this.dgvNgay.MinimumWidth = 8;
+            this.dgvNgay.Name = "dgvNgay";
+            this.dgvNgay.ReadOnly = true;
+            // 
+            // dgvGio
+            // 
+            this.dgvGio.DataPropertyName = "Gio";
+            this.dgvGio.HeaderText = "Giờ";
+            this.dgvGio.MinimumWidth = 8;
+            this.dgvGio.Name = "dgvGio";
+            this.dgvGio.ReadOnly = true;
+            // 
+            // dgvEdit
+            // 
+            this.dgvEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvEdit.FillWeight = 50F;
+            this.dgvEdit.HeaderText = "";
+            this.dgvEdit.Image = global::GUI.Properties.Resources.edit;
+            this.dgvEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvEdit.MinimumWidth = 50;
+            this.dgvEdit.Name = "dgvEdit";
+            this.dgvEdit.ReadOnly = true;
+            this.dgvEdit.Width = 50;
+            // 
+            // dgvPrint
+            // 
+            this.dgvPrint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvPrint.FillWeight = 50F;
+            this.dgvPrint.HeaderText = "";
+            this.dgvPrint.Image = global::GUI.Properties.Resources.icons8_print_100;
+            this.dgvPrint.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvPrint.MinimumWidth = 50;
+            this.dgvPrint.Name = "dgvPrint";
+            this.dgvPrint.ReadOnly = true;
+            this.dgvPrint.Width = 50;
+            // 
             // frmPOSBillList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -330,6 +351,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPOSBillList";
             this.Text = "frmPOSBillList";
+            this.Load += new System.EventHandler(this.frmPOSBillList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillList)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
@@ -350,13 +372,15 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaBill;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvWaiter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvOrderType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaKH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvTrangThai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvGiaTriHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaBan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvPTTT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvNgay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvGio;
         private System.Windows.Forms.DataGridViewImageColumn dgvEdit;
         private System.Windows.Forms.DataGridViewImageColumn dgvPrint;
     }

@@ -32,11 +32,12 @@
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.lblAdd = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtMaKH = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtTienDatCoc = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.txtMaKH = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -100,6 +101,39 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1530, 145);
             this.guna2Panel1.TabIndex = 8;
             // 
+            // txtMaKH
+            // 
+            this.txtMaKH.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMaKH.DefaultText = "";
+            this.txtMaKH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtMaKH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtMaKH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaKH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaKH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaKH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaKH.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaKH.Location = new System.Drawing.Point(642, 77);
+            this.txtMaKH.Margin = new System.Windows.Forms.Padding(8, 15, 8, 15);
+            this.txtMaKH.Name = "txtMaKH";
+            this.txtMaKH.PasswordChar = '\0';
+            this.txtMaKH.PlaceholderText = "";
+            this.txtMaKH.SelectedText = "";
+            this.txtMaKH.SelectionStart = "".Length;
+            this.txtMaKH.Size = new System.Drawing.Size(656, 53);
+            this.txtMaKH.TabIndex = 49;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(438, 92);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(207, 38);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "Mã khách hàng";
+            // 
             // txtTienDatCoc
             // 
             this.txtTienDatCoc.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -149,38 +183,14 @@
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
-            // txtMaKH
+            // guna2MessageDialog1
             // 
-            this.txtMaKH.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaKH.DefaultText = "";
-            this.txtMaKH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaKH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaKH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaKH.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaKH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaKH.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaKH.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaKH.Location = new System.Drawing.Point(642, 77);
-            this.txtMaKH.Margin = new System.Windows.Forms.Padding(8, 15, 8, 15);
-            this.txtMaKH.Name = "txtMaKH";
-            this.txtMaKH.PasswordChar = '\0';
-            this.txtMaKH.PlaceholderText = "";
-            this.txtMaKH.SelectedText = "";
-            this.txtMaKH.SelectionStart = "".Length;
-            this.txtMaKH.Size = new System.Drawing.Size(656, 53);
-            this.txtMaKH.TabIndex = 49;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(438, 92);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(207, 38);
-            this.label2.TabIndex = 48;
-            this.label2.Text = "Mã khách hàng";
+            this.guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.guna2MessageDialog1.Caption = null;
+            this.guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            this.guna2MessageDialog1.Parent = null;
+            this.guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            this.guna2MessageDialog1.Text = null;
             // 
             // frmTableSelect
             // 
@@ -211,5 +221,6 @@
         private System.Windows.Forms.Label label1;
         public Guna.UI2.WinForms.Guna2TextBox txtMaKH;
         private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
     }
 }

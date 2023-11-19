@@ -82,6 +82,12 @@
     <Compile Include="frmAccountAdd.Designer.cs">
       <DependentUpon>frmAccountAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCheckOut.Designer.cs">
+      <DependentUpon>frmCheckOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     </Compile>
     <EmbeddedResource Include="frmAccount.resx">
       <DependentUpon>frmAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCheckOut.resx">
+      <DependentUpon>frmCheckOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
@@ -459,6 +468,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-minus-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-bounced-check-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

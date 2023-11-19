@@ -25,22 +25,49 @@ namespace GUI
         public int DetailID;
         DataTable dtDM;
         DataTable dtSP;
+        DataTable dtTblJoin;
         ProductBUS productBus;
+        BillBUS billBUS;
+        BillDetailBUS billDetailBUS;
+        TableBUS tableBUS;
+        TableDTO tableDTO;
         int tiencoc;
         double total;
+        string waiterID;
+        string cusID;
         public bool Them = true; // CHo khởi tạo ban đầu bằng true 
         bool start = false;
         List<String> listProstate;
+        List<String> listTstate;
+        List<String> listBillstate;
+        List<String> listPaymentMethod;
         CustomerDTO customerDTO;
+        BillDTO billDTO;
+        BillDetailDTO billDetailDTO;
         public frmPOS()
         {
             InitializeComponent();
             productBus = new ProductBUS();
+
+            billBUS = new BillBUS();
+            billDetailBUS = new BillDetailBUS();
             this.Controls.Add(hScrollBar1);
             customerDTO = new CustomerDTO();
             listProstate = new List<String>();
             listProstate.Add("Còn");
             listProstate.Add("Hết");
+            listTstate = new List<string>();
+            listTstate.Add("Còn trống");
+            listTstate.Add("Đã đặt");
+            listTstate.Add("Đang dùng");
+            listBillstate = new List<string>();
+            listTstate.Add("Chưa thanh toán");
+            listTstate.Add("Đã thanh toán");
+            listPaymentMethod = new List<string>();
+            listPaymentMethod.Add("Tiền mặt");
+            listPaymentMethod.Add("Thanh toán nhanh");
+
+
 
         }
         private void GetCategory()
@@ -113,7 +140,6 @@ namespace GUI
 
         private void LoadData()
         {
-
             LoadProducts();
         }
 
@@ -267,6 +293,7 @@ namespace GUI
             frmWaiter.ShowDialog();
             lblWaiter.Text = frmWaiter.WaiterName;
             lblWaiter.Tag = frmWaiter.WaiterID;
+            waiterID = frmWaiter.WaiterID;
             lblWaiter.Visible = true;
         }
         private void btnBillList_Click(object sender, EventArgs e)
@@ -281,6 +308,9 @@ namespace GUI
                 // Ra khỏi form Bill List 
                 Them = frm.bonus; //  Them  = false lúc này sẽ hiển thị Bill cần sửa lên dgvPOS
                 BillID = frm.MainID;
+                
+                billDTO = frm.billDTO; //Lấy ra billDTO là record đã pick trong dgvBillist
+                
                // OrderType = frm.OrderType; //Lấy ordertype để xác định có phải din in ko , nếu là din in thì inner join với BAN để lấy idTable
                 LoadEntries();
                 //  LoadData();
@@ -291,52 +321,33 @@ namespace GUI
         //Hieenr thi Bill can sua len dgvPOS
         private void LoadEntries()
         {
-            /*try
+            try
             {
                 dtTblJoin = new DataTable();
                 dtTblJoin.Clear();
-                DataSet ds = new DataSet();
-                if (OrderType.Equals("Din in"))
-                {
-                    ds = dbTblMain.GetJoinTABLE(BillID);
-                    dtTblJoin = ds.Tables[0];
-                    TableName = dtTblJoin.Rows[0]["Tname"].ToString();
-                    TableID = dtTblJoin.Rows[0]["Tid"].ToString();
-                    btnDinIn.Checked = true;
-                    lblWaiter.Visible = true;
-                    lblTable.Visible = true;
-                }
-                else
-                {
-                    ds = dbTblMain.GetJoin(BillID);
-                    dtTblJoin = ds.Tables[0];
-                }
 
-
-                //Lay Du lieu cua BillID
-                if (dtTblJoin.Rows[0]["orderType"].ToString() == "Delivery")
-                {
-                    btnDelivery.Checked = true;
-                    lblWaiter.Visible = false;
-                    lblTable.Visible = false;
-                }
-                else if (dtTblJoin.Rows[0]["orderType"].ToString() == "Take away")
-                {
-                    btnTakeAway.Checked = true; lblWaiter.Visible = false;
-                    lblTable.Visible = false;
-                }
-
+                dtTblJoin = billBUS.GetBillJoinDetail(BillID);
+                
+            
+                TableID = dtTblJoin.Rows[0]["MaBan"].ToString();
+                //btnDinIn.Checked = true;
+                waiterID = dtTblJoin.Rows[0]["MaNV"].ToString();
+                cusID = dtTblJoin.Rows[0]["MaKH"].ToString();
+                lblWaiter.Visible = true;
+                lblTable.Visible = true;
                 dgvPOS.Rows.Clear();
                 foreach (DataRow item in dtTblJoin.Rows)
                 {
-                    lblTable.Text = item["TableName"].ToString();
-                    lblWaiter.Text = item["WaiterName"].ToString();
-                    string detailIDD = item["DetailID"].ToString();
-                    string proName = item["proName"].ToString();
-                    string proID = item["proID"].ToString();
-                    string qty = item["qty"].ToString();
-                    string price = item["price"].ToString();
-                    string amount = item["amount"].ToString();
+                    // lblTable.Text = item["TableName"].ToString();
+                    //lblWaiter.Text = item["WaiterName"].ToString();
+                    TableID = item["MaBan"].ToString();
+                    cusID = item["MaKH"].ToString();
+                    string detailIDD = item["MaChiTietHD"].ToString();
+                    string proName = item["TenSP"].ToString();
+                    string proID = item["MaSP"].ToString();
+                    string qty = item["SoLuong"].ToString();
+                    string price = item["DonGia"].ToString();
+                    string amount = item["TongGT"].ToString();
                     object[] obj = { detailIDD, proID, proName, qty, price, amount };
                     dgvPOS.Rows.Add(obj);
                 }
@@ -346,14 +357,85 @@ namespace GUI
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Không thể load dữ liệu. Lỗi: ");
-            }*/
+                MessageBox.Show("Không thể load dữ liệu. Lỗi: " + ex.Message);
+            }
 
 
         }
 
         private void btnKOT_Click(object sender, EventArgs e)
+        //gửi đến bộ phận nhà bếp dưới dạng một phiếu đặt hàng (KOT).  (giống nút Save)     
         {
+            int detailID = 0;
+            
+            if (Them)
+            {
+                //Cột MaBill tu dong sinh gia tri
+                billDTO = new BillDTO(BillID, customerDTO.Id, "Chưa thanh toán", Convert.ToDouble(lblTotal.Text), waiterID, TableID, null, Convert.ToDateTime(Date), Time.ToShortTimeString());
+                //Cap nhat gia tri dong hien tai nho SELECT_SCOPE_INDENTITY
+                BillID = billBUS.AddBill(billDTO);
+                // Thay vì như mặc định Hàm AddTblMain trả về true , false, ở đây nó trả về giá trị Bill Id của đơn hiện tại vừa thêm vào
+                if (BillID > 0)
+                    MessageBox.Show("Đã thêm xong!");
+                else
+                    MessageBox.Show("Không thêm được.Lỗi rồi!" + billBUS.err);
+
+            }
+            else
+            {
+                billDTO = new BillDTO(BillID, customerDTO.Id, "Chưa thanh toán", Convert.ToDouble(lblTotal.Text), waiterID, TableID, null, Convert.ToDateTime(Date), Time.ToShortTimeString());
+                if (billBUS.UpdateBill(billDTO))
+                {
+                    MessageBox.Show("Đã sửa xong!");
+                }
+                else
+                {
+                    MessageBox.Show("Sửa không thành công. Lỗi: '" + billBUS.err + "'");
+                }
+            }
+            foreach (DataGridViewRow row in dgvPOS.Rows)
+            {
+                detailID = Convert.ToInt32(row.Cells["dgvDetailID"].Value); //
+
+                if (detailID == 0)
+                {
+                    billDetailDTO = new BillDetailDTO(BillID, row.Cells["dgvMaSP"].Value.ToString(), row.Cells["dgvTenSP"].Value.ToString(), int.Parse(row.Cells["dgvQty"].Value.ToString()), float.Parse(row.Cells["dgvPrice"].Value.ToString()), float.Parse(row.Cells["dgvAmount"].Value.ToString()),null);
+                    if (!billDetailBUS.AddBillDetail(billDetailDTO))
+                        MessageBox.Show("Thêm chi tiết hóa đơn không thành công. Lỗi: '" + billDetailBUS.err + "'");
+
+
+                }
+                else // Gía trị trong cột dgvDetailID của dgvPOS đã ko còn là 0 mà là giá trị từ tblDetail đổ xuống ( vì khi này là chỉnh sửa , tức giá trị detailID đó đã có trong database
+                {
+                    billDetailDTO = new BillDetailDTO(BillID, row.Cells["dgvMaSP"].Value.ToString(), row.Cells["dgvTenSP"].Value.ToString(), int.Parse(row.Cells["dgvQty"].Value.ToString()), float.Parse(row.Cells["dgvPrice"].Value.ToString()), float.Parse(row.Cells["dgvAmount"].Value.ToString()), Convert.ToInt32(row.Cells["dgvDetailID"].Value));
+                    //Lấy dữ liệu trong dgvPOS update lên dbTblDetail
+                    if (billDetailBUS.UpdateBillDetail(billDetailDTO))
+                    {
+                        MessageBox.Show("Đã sửa xong!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa không thành công. Lỗi: '" + billDetailBUS.err + "'");
+                    }
+                }
+            }
+            guna2MessageDialog1.Show("Saved Successfully");
+            //    MainID = 0;
+            detailID = 0;
+            dgvPOS.Rows.Clear();
+            lblTable.Text = "";
+            BillID = 0;
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            lblTotal.Text = "00";
+        
+
+            //    this.Close();
+            Them = true;
+
+
+            //Need to add field to table to store additional info
 
         }
 
@@ -415,6 +497,55 @@ namespace GUI
             {
                 MessageBox.Show("Không xóa được. Lỗi rồi!" + err.Message);
             }
+        }
+
+        private void DPTDate_ValueChanged(object sender, EventArgs e)
+        {
+            Date = DPTDate.Value;
+        }
+
+        private void DTPTime_ValueChanged(object sender, EventArgs e)
+        {
+            Time = DTPTime.Value;
+        }
+
+        private void btnFastCard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            frmCheckOut frm = new frmCheckOut();
+            frm.billID = BillID; // Lấy giá trị Bill hiện tại truyền cho frm để có thể update cho dat
+            frm.amt = Convert.ToDouble(lblTotal.Text); //truyền vào giá trị để khi ấn checkout hiện lên , giá trị Total hiện lên txtBillAmount
+            frm.billDTO = billDTO; //Truyền DTO vừa lấy đc từ việc bấm vào dgvEdit trong dgvBillist
+            frm.billDTO.Pttt = listPaymentMethod[0];
+            frm.ShowDialog();
+
+            //  guna2MessageDialog1.Show("Saved Success");
+            tableBUS = new TableBUS();
+            tableDTO = new TableDTO(TableID, listTstate[0],null,null);
+              if (tableBUS.UpdateTrangThaiBan(tableDTO))
+            {
+                MessageBox.Show("Cập nhật trạng thái trống cho bàn thành công!");
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật không thành công. Lỗi: '" + tableBUS.err + "'");
+          
+            }
+
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblCustomer.Text = "";
+           /* lblWaiter.Visible = false;
+            lblTable.Visible = false;*/
+            lblTotal.Text = "0";
+            dgvPOS.Rows.Clear();
+
+            BillID = 0;
+            DetailID = 0;
         }
     }
 }

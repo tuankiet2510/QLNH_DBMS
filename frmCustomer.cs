@@ -20,6 +20,7 @@ namespace GUI
         CustomerBUS customerBUS;
         DataTable dtCustomer;
         public CustomerDTO customerDTO;
+
         public frmCustomer()
         {
             InitializeComponent();
@@ -54,13 +55,39 @@ namespace GUI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmCustomerAdd frm = new frmCustomerAdd();
-            frm.txtCustomerID.ReadOnly = false;
-            frm.txtCustomerLoyaltyPoint.Text = "0";
-            
-            frm.ShowDialog();
-            LoadData();
+            using (frmCustomerAdd frm = new frmCustomerAdd())
+            {
+                frm.txtCustomerID.ReadOnly = false;
+                frm.txtCustomerLoyaltyPoint.Text = "0";
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    customerDTO = frm.customerDTO;
+                }
+            }
+                /* cần đảm bảo rằng biến customerDTO là một thuộc tính public hoặc có phương thức getter public trong form frmCustomerAdd. 
+                 Khi frmCustomerAdd đóng lại sau khi gọi ShowDialog(), bạn có thể truy cập customerDTO từ đối tượng frm miễn là form không bị Dispose. */
+
+                LoadData();
+                foreach (DataGridViewRow row in dgvCustomer.Rows)
+                {
+                    // Giả sử "dgvMaKH" là tên của cột trong DataGridView và bạn muốn so sánh nó với ID của customer
+                    if (row.Cells["dgvMaKH"].Value.ToString() == customerDTO.Id.ToString())
+                    {
+                        // Set the current cell to the cell in the first column of the row you found
+                        dgvCustomer.CurrentCell = row.Cells[0];
+
+                        // Select the row
+                        row.Selected = true;
+
+                        // Optionally, scroll to the selected row if it is not visible
+                        dgvCustomer.FirstDisplayedScrollingRowIndex = row.Index;
+
+                        break; // Thoát vòng lặp sau khi đã tìm thấy hàng phù hợp
+                    }
+                }
+
         }
+        
 
  
 
@@ -131,7 +158,7 @@ namespace GUI
             {
                 try
                 {
-                    Console.WriteLine("00");
+ 
                     dtCustomer = new DataTable();
                     dtCustomer.Clear();
                     

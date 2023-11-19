@@ -26,11 +26,6 @@ namespace DTO
             Status = status;
         }
 
-        public TableDTO(string id, string status, string customerId) : this(id, status)
-        {
-            CustomerId = customerId;
-        }
-
         public TableDTO(string id, string status, int? deposit, string customerId) : this(id, status)
         {
             Deposit = deposit;

@@ -1,5 +1,6 @@
 ﻿using BUS;
 using DTO;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,8 +26,7 @@ namespace GUI.Select
         public string TableID = "";
         public int? tiencoc;
         public string err;
-
-
+        public bool datban = false;
         public frmTableSelect()
         {
             InitializeComponent();
@@ -59,10 +59,10 @@ namespace GUI.Select
                 b.HoverState.FillColor = Color.FromArgb(50, 55, 89);
                 //b.Tag = row["Tid"].ToString();
                 b.Click += new EventHandler(b_Click);
-                if (row["TrangThai"].ToString().Equals(listTstate[1]))
-                    b.Enabled = false;
-                else
+                if (row["TrangThai"].ToString().Equals(listTstate[0]))
                     b.Enabled = true;
+                else
+                    b.Enabled = false;
                 flowLayoutPanel1.Controls.Add(b);
             }
         }
@@ -77,20 +77,24 @@ namespace GUI.Select
             TableState = (sender as Guna.UI2.WinForms.Guna2Button).Tag.ToString();
             tiencoc = string.IsNullOrEmpty(txtTienDatCoc.Text) ? (int?)null : int.TryParse(txtTienDatCoc.Text, out int result) ? result : (int?)null;
             maKH = string.IsNullOrEmpty(txtMaKH.Text) ? null : txtMaKH.Text;
-            //tiencoc  = Int32.Parse(txtTienDatCoc.Text ?? "0");
-          
-            if(tiencoc != null) //Đặt trước
-                tabelDTO = new TableDTO(TableID, listTstate[1], tiencoc, maKH);
-            else
-                tabelDTO = new TableDTO(TableID, listTstate[2], tiencoc, maKH);
-            if (tableBUS.UpdateTrangThaiBan(tabelDTO))
-            {
-                MessageBox.Show($"Đặt {TableID} thành công");
+            
+            //KHỎI CẦN CHECK LÀ ĐẶT BÀN HAY DÙNG LUÔN VÌ ĐÃ CÓ trigger check tiendatcoc đói với TrangThai = N'Đã đặt'
+            tabelDTO = new TableDTO(TableID, listTstate[1], tiencoc, maKH);
+                if (tableBUS.UpdateTrangThaiBan(tabelDTO))
+                {
+                guna2MessageDialog1.Show($"Đặt {TableID} thành công");
+                this.Close();// Đóng form
             }
-            else
-                MessageBox.Show(tableBUS.err);
+                else
+                    guna2MessageDialog1.Show(tableBUS.err);
+               
+           
 
-            this.Close();// Đóng form
+
+
+
+
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

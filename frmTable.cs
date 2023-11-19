@@ -9,13 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
-
+using DTO;
+using GUI.Select;
 namespace GUI
 {
     public partial class frmTable : Form
     {
         TableBUS tableBus;
         DataTable dtTable = null;
+        CustomerDTO customerDTO = null;
         public frmTable()
         {
             InitializeComponent();
@@ -52,7 +54,7 @@ namespace GUI
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string selectedMaBan = dgvTable.CurrentRow.Cells[0].Value.ToString();
+            /*string selectedMaBan = dgvTable.CurrentRow.Cells[0].Value.ToString();
             if (string.IsNullOrWhiteSpace(selectedMaBan))
             {
                 MessageBox.Show("Bàn không hợp lệ");
@@ -62,7 +64,15 @@ namespace GUI
                 frmTableAdd frmTableAdd = new frmTableAdd(selectedMaBan);
               //  frmTableAdd.cbTrangThai.SelectedIndex = frmTableAdd.cbTrangThai.Items.IndexOf()
                 frmTableAdd.ShowDialog();
-            }
+            }*/
+            frmCustomer frmCus = new frmCustomer();
+            frmCus.ShowDialog();
+            customerDTO = frmCus.customerDTO;
+            frmTableSelect frmTableSelect = new frmTableSelect();
+            frmTableSelect.datban = true;
+            frmTableSelect.txtMaKH.Text = customerDTO.Id;
+            frmTableSelect.ShowDialog();
+
         }
 
         private void dgvTable_CellClick(object sender, DataGridViewCellEventArgs e)

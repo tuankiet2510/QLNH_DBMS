@@ -17,7 +17,7 @@ namespace GUI
     {
 
         CustomerBUS customerBUS;
-        CustomerDTO customerDTO;
+        public CustomerDTO customerDTO { get; set; }
         public frmCustomerAdd()
         {
             InitializeComponent();
@@ -60,11 +60,10 @@ namespace GUI
                         MessageBox.Show("Thêm không thành công. Lỗi: '" + customerBUS.err + "'");
 
                 }
-              
-               
-
             }
+            this.DialogResult = DialogResult.OK;
             this.Close();
+                
         }
 
         private void btnClose_Click(object sender, EventArgs e)
