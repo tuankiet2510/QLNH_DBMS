@@ -28,15 +28,6 @@ namespace DAO
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             con.Close();
             sda.Fill(dtTable);
-
-            if (dtTable.Rows.Count > 0)
-            {
-                Console.WriteLine("cor");
-            }
-            else
-            {
-                Console.WriteLine("Sai ");
-            }
             return dtTable;
         }
         /*public bool UpdateTrangThaiBan(string maBan, string trangThai, ref string err)

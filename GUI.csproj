@@ -106,6 +106,12 @@
     <Compile Include="frmHome.Designer.cs">
       <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShift.Designer.cs">
+      <DependentUpon>frmShift.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,17 +148,23 @@
     <Compile Include="frmProductAdd.Designer.cs">
       <DependentUpon>frmProductAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmShift.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmShift.designer.cs">
-      <DependentUpon>frmShift.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmShiftAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmShiftAdd.designer.cs">
+    <Compile Include="frmShiftAdd.Designer.cs">
       <DependentUpon>frmShiftAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShiftSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShiftSchedule.designer.cs">
+      <DependentUpon>frmShiftSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShiftScheduleAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShiftScheduleAdd.designer.cs">
+      <DependentUpon>frmShiftScheduleAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="frmStaff.cs">
       <SubType>Form</SubType>
@@ -243,6 +255,9 @@
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmShift.resx">
+      <DependentUpon>frmShift.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,11 +276,14 @@
     <EmbeddedResource Include="frmProductAdd.resx">
       <DependentUpon>frmProductAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmShift.resx">
-      <DependentUpon>frmShift.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmShiftAdd.resx">
       <DependentUpon>frmShiftAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShiftSchedule.resx">
+      <DependentUpon>frmShiftSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShiftScheduleAdd.resx">
+      <DependentUpon>frmShiftScheduleAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
@@ -471,6 +489,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-bounced-check-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\task-png.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

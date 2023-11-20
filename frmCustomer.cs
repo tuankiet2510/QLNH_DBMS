@@ -20,7 +20,7 @@ namespace GUI
         CustomerBUS customerBUS;
         DataTable dtCustomer;
         public CustomerDTO customerDTO;
-
+        bool check_notnull_action;
         public frmCustomer()
         {
             InitializeComponent();
@@ -62,12 +62,16 @@ namespace GUI
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     customerDTO = frm.customerDTO;
+                    check_notnull_action = frm.check_not_null_customerDTO;
                 }
+
             }
                 /* cần đảm bảo rằng biến customerDTO là một thuộc tính public hoặc có phương thức getter public trong form frmCustomerAdd. 
                  Khi frmCustomerAdd đóng lại sau khi gọi ShowDialog(), bạn có thể truy cập customerDTO từ đối tượng frm miễn là form không bị Dispose. */
 
                 LoadData();
+            if (check_notnull_action == true)
+            {
                 foreach (DataGridViewRow row in dgvCustomer.Rows)
                 {
                     // Giả sử "dgvMaKH" là tên của cột trong DataGridView và bạn muốn so sánh nó với ID của customer
@@ -85,6 +89,7 @@ namespace GUI
                         break; // Thoát vòng lặp sau khi đã tìm thấy hàng phù hợp
                     }
                 }
+            }
 
         }
         

@@ -285,6 +285,7 @@ namespace GUI
             lblCustomer.Text = customerDTO.Id;
             frmTableSelect frmTableSelect = new frmTableSelect();
             frmTableSelect.txtMaKH.Text = customerDTO.Id;
+            frmTableSelect.customer = customerDTO;
             frmTableSelect.ShowDialog();
             lblTable.Text = frmTableSelect.TableID;
             lblTable.Visible = true;

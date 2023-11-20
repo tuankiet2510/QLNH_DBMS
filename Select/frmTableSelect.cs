@@ -26,6 +26,7 @@ namespace GUI.Select
         public string TableID = "";
         public int? tiencoc;
         public string err;
+        public CustomerDTO customer = null;
         public bool datban = false;
         public frmTableSelect()
         {
@@ -59,10 +60,14 @@ namespace GUI.Select
                 b.HoverState.FillColor = Color.FromArgb(50, 55, 89);
                 //b.Tag = row["Tid"].ToString();
                 b.Click += new EventHandler(b_Click);
+               
                 if (row["TrangThai"].ToString().Equals(listTstate[0]))
                     b.Enabled = true;
                 else
                     b.Enabled = false;
+                if (row["TrangThai"].ToString().Equals(listTstate[2]) && row["MaKH"].ToString().Equals(customer.Id))
+                    b.Enabled = true;
+                    
                 flowLayoutPanel1.Controls.Add(b);
             }
         }
@@ -89,12 +94,6 @@ namespace GUI.Select
                     guna2MessageDialog1.Show(tableBUS.err);
                
            
-
-
-
-
-
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)

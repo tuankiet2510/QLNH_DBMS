@@ -51,7 +51,7 @@ namespace DAO
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 err = ex.Message;
             }
@@ -103,7 +103,7 @@ namespace DAO
                     return true;
 
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 err = ex.Message;
             }

@@ -38,17 +38,17 @@ namespace BUS
         }
         public bool addEmployee(EmployeeDTO employeeDTO)
         {
-            return employeeDAO.Add_Employee(employeeDTO);
+            return employeeDAO.Add_Employee(employeeDTO, ref err);
         }
 
         public bool editEmployee(EmployeeDTO employeeDTO)
         {
-            return employeeDAO.Edit_Employee(employeeDTO);
+            return employeeDAO.Edit_Employee(employeeDTO, ref err);
         }
 
         public bool deleteEmployee(EmployeeDTO employeeDTO)
         {
-            return employeeDAO.Delete_Employee(employeeDTO);
+            return employeeDAO.Delete_Employee(employeeDTO, ref err);
         }
         public bool deleteEmployee(string id)
         {

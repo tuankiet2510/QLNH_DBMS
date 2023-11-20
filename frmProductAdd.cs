@@ -43,8 +43,7 @@ namespace QLNH_DBMS
             if (txtProductID.ReadOnly == true) //Chỉnh sửa món 
             {
 
-                try
-                {
+                
                     /*string displayValue = cbbCateID.Text;
                     string[] splitValues = displayValue.Split('-');
                     string madm = splitValues[0];
@@ -58,17 +57,13 @@ namespace QLNH_DBMS
                     {
                         MessageBox.Show("Sửa không thành công. Lỗi: '" + productbus.err + "'");
                     }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Sửa không thành công. Lỗi: '" + ex.Message + "'");
-                }
+                
+                
             }
 
             else //Thêm món
             {
-                try
-                {
+                
                     productDTO = new ProductDTO(txtProductID.Text, txtProductName.Text, cbbCategory.Text, cbbState.Text, float.Parse(txtPrice.Text), txtImage.Image);
                     if (productbus.addProduct(productDTO))
                     {
@@ -78,11 +73,8 @@ namespace QLNH_DBMS
                     {
                         MessageBox.Show("Thêm không thành công. Lỗi: '" + productbus.err);
                     }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Thêm không thành công. Lỗi: '" + ex.Message + "'");
-                }
+                
+                
             }
             this.Close();
 

@@ -90,7 +90,7 @@ namespace DAO
             return dt;
         }
 
-        public bool Add_Employee(EmployeeDTO employee)
+        public bool Add_Employee(EmployeeDTO employee, ref string err)
         {
             try
             {
@@ -114,8 +114,9 @@ namespace DAO
                     cmd.ExecuteNonQuery();
                     return true;
                 }
-                catch
+                catch(SqlException e)
                 {
+                    err = e.Message;
                     con.Close();
                     return false;
                 }
@@ -126,7 +127,7 @@ namespace DAO
             }
         }
 
-        public bool Edit_Employee(EmployeeDTO employee)
+        public bool Edit_Employee(EmployeeDTO employee, ref string err)
         {
             try
             {
@@ -150,8 +151,9 @@ namespace DAO
                     con.Close();
                     return true;
                 }
-                catch
+                catch(SqlException e)
                 {
+                    err = e.Message;
                     con.Close();
                     return false;
                 }
@@ -162,7 +164,7 @@ namespace DAO
             }
         }
 
-        public bool Delete_Employee(EmployeeDTO employee)
+        public bool Delete_Employee(EmployeeDTO employee, ref string err)
         {
             SqlCommand cmd = new SqlCommand("EXEC proc_DeleteEmployee @MaNV", con);
             cmd.Parameters.Add("@MaNV", SqlDbType.NVarChar, 10).Value = employee.MaNV;
@@ -175,6 +177,7 @@ namespace DAO
             }
             else
             {
+                
                 con.Close();
                 return false;
             }

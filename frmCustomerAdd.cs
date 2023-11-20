@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,7 @@ namespace GUI
 
         CustomerBUS customerBUS;
         public CustomerDTO customerDTO { get; set; }
+        public bool check_not_null_customerDTO { get;set; } //nẾU ng dùng khởi tạo frmCustomerAdd nhưng ấn vào close không customerDTO null
         public frmCustomerAdd()
         {
             InitializeComponent();
@@ -36,6 +38,7 @@ namespace GUI
                 return;
             }
             customerDTO = new CustomerDTO(txtCustomerID.Text, txtCustomerName.Text, txtCustomerPhone.Text, int.Parse(txtCustomerLoyaltyPoint.Text));
+            check_not_null_customerDTO = true;
             if (txtCustomerID.ReadOnly == true) //Sửa khách hàng
             {
            //     customerDTO = new CustomerDTO(txtCustomerID.Text, txtCustomerName.Text, txtCustomerPhone.Text,int.Parse(txtCustomerLoyaltyPoint.Text));
@@ -61,13 +64,16 @@ namespace GUI
 
                 }
             }
+            
             this.DialogResult = DialogResult.OK;
+            
             this.Close();
                 
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+           // them = false;
             this.Close();
         }
 

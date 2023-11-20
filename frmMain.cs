@@ -88,7 +88,7 @@ namespace QLNH_DBMS
 
         private void btnTask_Click(object sender, EventArgs e)
         {
-
+            AddControls(new frmShift());
         }
 
         private void btnReview_Click(object sender, EventArgs e)
