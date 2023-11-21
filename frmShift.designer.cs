@@ -39,19 +39,20 @@
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnAdd = new Guna.UI2.WinForms.Guna2ImageButton();
             this.dgvShift = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.dgvMaCa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvNgayLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvGioBatDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvGioKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvNgayTrongTuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvEdit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dgvDel = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.lblProduct = new System.Windows.Forms.Label();
             this.lblSearchProduct = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.btnBangPhanCong = new Guna.UI2.WinForms.Guna2Button();
+            this.dgvMaCa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvNgayLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvGioBatDau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvGioKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvNgayTrongTuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCreateAssignment = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dgvEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dgvDel = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShift)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,6 +144,7 @@
             this.dgvGioBatDau,
             this.dgvGioKetThuc,
             this.dgvNgayTrongTuan,
+            this.dgvCreateAssignment,
             this.dgvEdit,
             this.dgvDel});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -195,70 +197,6 @@
             this.dgvShift.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvShift.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvShift.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellClick);
-            // 
-            // dgvMaCa
-            // 
-            this.dgvMaCa.DataPropertyName = "MaCa";
-            this.dgvMaCa.HeaderText = "Mã ca";
-            this.dgvMaCa.MinimumWidth = 6;
-            this.dgvMaCa.Name = "dgvMaCa";
-            this.dgvMaCa.ReadOnly = true;
-            // 
-            // dgvNgayLam
-            // 
-            this.dgvNgayLam.DataPropertyName = "NgayLam";
-            this.dgvNgayLam.HeaderText = "Ngày làm";
-            this.dgvNgayLam.MinimumWidth = 6;
-            this.dgvNgayLam.Name = "dgvNgayLam";
-            this.dgvNgayLam.ReadOnly = true;
-            // 
-            // dgvGioBatDau
-            // 
-            this.dgvGioBatDau.DataPropertyName = "GioBatDau";
-            this.dgvGioBatDau.HeaderText = "Giờ bắt đầu";
-            this.dgvGioBatDau.MinimumWidth = 6;
-            this.dgvGioBatDau.Name = "dgvGioBatDau";
-            this.dgvGioBatDau.ReadOnly = true;
-            // 
-            // dgvGioKetThuc
-            // 
-            this.dgvGioKetThuc.DataPropertyName = "GioKetThuc";
-            this.dgvGioKetThuc.HeaderText = "Giờ  kết thúc";
-            this.dgvGioKetThuc.MinimumWidth = 6;
-            this.dgvGioKetThuc.Name = "dgvGioKetThuc";
-            this.dgvGioKetThuc.ReadOnly = true;
-            // 
-            // dgvNgayTrongTuan
-            // 
-            this.dgvNgayTrongTuan.DataPropertyName = "NgayTrongTuan";
-            this.dgvNgayTrongTuan.HeaderText = "Ngày trong tuần";
-            this.dgvNgayTrongTuan.MinimumWidth = 8;
-            this.dgvNgayTrongTuan.Name = "dgvNgayTrongTuan";
-            this.dgvNgayTrongTuan.ReadOnly = true;
-            // 
-            // dgvEdit
-            // 
-            this.dgvEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dgvEdit.FillWeight = 50F;
-            this.dgvEdit.HeaderText = "";
-            this.dgvEdit.Image = global::GUI.Properties.Resources.edit;
-            this.dgvEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvEdit.MinimumWidth = 50;
-            this.dgvEdit.Name = "dgvEdit";
-            this.dgvEdit.ReadOnly = true;
-            this.dgvEdit.Width = 50;
-            // 
-            // dgvDel
-            // 
-            this.dgvDel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dgvDel.FillWeight = 50F;
-            this.dgvDel.HeaderText = "";
-            this.dgvDel.Image = global::GUI.Properties.Resources.delete;
-            this.dgvDel.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvDel.MinimumWidth = 50;
-            this.dgvDel.Name = "dgvDel";
-            this.dgvDel.ReadOnly = true;
-            this.dgvDel.Width = 50;
             // 
             // dataGridViewImageColumn2
             // 
@@ -330,6 +268,87 @@
             this.btnBangPhanCong.Text = "Bảng phân công";
             this.btnBangPhanCong.Click += new System.EventHandler(this.btnBangPhanCong_Click);
             // 
+            // dgvMaCa
+            // 
+            this.dgvMaCa.DataPropertyName = "MaCa";
+            this.dgvMaCa.FillWeight = 50.52632F;
+            this.dgvMaCa.HeaderText = "Mã ca";
+            this.dgvMaCa.MinimumWidth = 6;
+            this.dgvMaCa.Name = "dgvMaCa";
+            this.dgvMaCa.ReadOnly = true;
+            // 
+            // dgvNgayLam
+            // 
+            this.dgvNgayLam.DataPropertyName = "NgayLam";
+            this.dgvNgayLam.FillWeight = 50.52632F;
+            this.dgvNgayLam.HeaderText = "Ngày làm";
+            this.dgvNgayLam.MinimumWidth = 6;
+            this.dgvNgayLam.Name = "dgvNgayLam";
+            this.dgvNgayLam.ReadOnly = true;
+            // 
+            // dgvGioBatDau
+            // 
+            this.dgvGioBatDau.DataPropertyName = "GioBatDau";
+            this.dgvGioBatDau.FillWeight = 50.52632F;
+            this.dgvGioBatDau.HeaderText = "Giờ bắt đầu";
+            this.dgvGioBatDau.MinimumWidth = 6;
+            this.dgvGioBatDau.Name = "dgvGioBatDau";
+            this.dgvGioBatDau.ReadOnly = true;
+            // 
+            // dgvGioKetThuc
+            // 
+            this.dgvGioKetThuc.DataPropertyName = "GioKetThuc";
+            this.dgvGioKetThuc.FillWeight = 50.52632F;
+            this.dgvGioKetThuc.HeaderText = "Giờ  kết thúc";
+            this.dgvGioKetThuc.MinimumWidth = 6;
+            this.dgvGioKetThuc.Name = "dgvGioKetThuc";
+            this.dgvGioKetThuc.ReadOnly = true;
+            // 
+            // dgvNgayTrongTuan
+            // 
+            this.dgvNgayTrongTuan.DataPropertyName = "NgayTrongTuan";
+            this.dgvNgayTrongTuan.FillWeight = 50.52632F;
+            this.dgvNgayTrongTuan.HeaderText = "Ngày trong tuần";
+            this.dgvNgayTrongTuan.MinimumWidth = 8;
+            this.dgvNgayTrongTuan.Name = "dgvNgayTrongTuan";
+            this.dgvNgayTrongTuan.ReadOnly = true;
+            // 
+            // dgvCreateAssignment
+            // 
+            this.dgvCreateAssignment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvCreateAssignment.FillWeight = 150F;
+            this.dgvCreateAssignment.HeaderText = "Tạo phân công cho ca";
+            this.dgvCreateAssignment.Image = global::GUI.Properties.Resources.select_icon_14;
+            this.dgvCreateAssignment.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvCreateAssignment.MinimumWidth = 200;
+            this.dgvCreateAssignment.Name = "dgvCreateAssignment";
+            this.dgvCreateAssignment.ReadOnly = true;
+            this.dgvCreateAssignment.Width = 200;
+            // 
+            // dgvEdit
+            // 
+            this.dgvEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvEdit.FillWeight = 50F;
+            this.dgvEdit.HeaderText = "";
+            this.dgvEdit.Image = global::GUI.Properties.Resources.edit;
+            this.dgvEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvEdit.MinimumWidth = 50;
+            this.dgvEdit.Name = "dgvEdit";
+            this.dgvEdit.ReadOnly = true;
+            this.dgvEdit.Width = 50;
+            // 
+            // dgvDel
+            // 
+            this.dgvDel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvDel.FillWeight = 50F;
+            this.dgvDel.HeaderText = "";
+            this.dgvDel.Image = global::GUI.Properties.Resources.delete;
+            this.dgvDel.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvDel.MinimumWidth = 50;
+            this.dgvDel.Name = "dgvDel";
+            this.dgvDel.ReadOnly = true;
+            this.dgvDel.Width = 50;
+            // 
             // frmShift
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -364,13 +383,14 @@
         private System.Windows.Forms.Label lblProduct;
         private System.Windows.Forms.Label lblSearchProduct;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
+        private Guna.UI2.WinForms.Guna2Button btnBangPhanCong;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaCa;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNgayLam;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvGioBatDau;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvGioKetThuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNgayTrongTuan;
+        private System.Windows.Forms.DataGridViewImageColumn dgvCreateAssignment;
         private System.Windows.Forms.DataGridViewImageColumn dgvEdit;
         private System.Windows.Forms.DataGridViewImageColumn dgvDel;
-        private Guna.UI2.WinForms.Guna2Button btnBangPhanCong;
     }
 }

@@ -40,10 +40,10 @@
             this.dpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.dgvMaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvHoNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvMaCa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvNgayLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvHoNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvNgayTrongTuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.dgvDelete = new System.Windows.Forms.DataGridViewImageColumn();
@@ -73,10 +73,10 @@
             this.dgvShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvShift.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvMaNV,
+            this.dgvHoNV,
+            this.dgvTenNV,
             this.dgvMaCa,
             this.dgvNgayLam,
-            this.dgvTenNV,
-            this.dgvHoNV,
             this.dgvNgayTrongTuan,
             this.dgvEdit,
             this.dgvDelete});
@@ -201,14 +201,34 @@
             // dgvMaNV
             // 
             this.dgvMaNV.DataPropertyName = "MaNV";
+            this.dgvMaNV.FillWeight = 60.29476F;
             this.dgvMaNV.HeaderText = "Mã nhân viên";
             this.dgvMaNV.MinimumWidth = 8;
             this.dgvMaNV.Name = "dgvMaNV";
             this.dgvMaNV.ReadOnly = true;
             // 
+            // dgvHoNV
+            // 
+            this.dgvHoNV.DataPropertyName = "HoNV";
+            this.dgvHoNV.FillWeight = 60.29476F;
+            this.dgvHoNV.HeaderText = "Họ nhân viên";
+            this.dgvHoNV.MinimumWidth = 8;
+            this.dgvHoNV.Name = "dgvHoNV";
+            this.dgvHoNV.ReadOnly = true;
+            // 
+            // dgvTenNV
+            // 
+            this.dgvTenNV.DataPropertyName = "TenNV";
+            this.dgvTenNV.FillWeight = 60.29476F;
+            this.dgvTenNV.HeaderText = "Tên nhân viên";
+            this.dgvTenNV.MinimumWidth = 8;
+            this.dgvTenNV.Name = "dgvTenNV";
+            this.dgvTenNV.ReadOnly = true;
+            // 
             // dgvMaCa
             // 
             this.dgvMaCa.DataPropertyName = "MaCa";
+            this.dgvMaCa.FillWeight = 60.29476F;
             this.dgvMaCa.HeaderText = "Mã Ca";
             this.dgvMaCa.MinimumWidth = 6;
             this.dgvMaCa.Name = "dgvMaCa";
@@ -217,30 +237,16 @@
             // dgvNgayLam
             // 
             this.dgvNgayLam.DataPropertyName = "NgayLam";
+            this.dgvNgayLam.FillWeight = 60.29476F;
             this.dgvNgayLam.HeaderText = "Ngày làm";
             this.dgvNgayLam.MinimumWidth = 6;
             this.dgvNgayLam.Name = "dgvNgayLam";
             this.dgvNgayLam.ReadOnly = true;
             // 
-            // dgvTenNV
-            // 
-            this.dgvTenNV.DataPropertyName = "TenNV";
-            this.dgvTenNV.HeaderText = "Tên nhân viên";
-            this.dgvTenNV.MinimumWidth = 8;
-            this.dgvTenNV.Name = "dgvTenNV";
-            this.dgvTenNV.ReadOnly = true;
-            // 
-            // dgvHoNV
-            // 
-            this.dgvHoNV.DataPropertyName = "HoNV";
-            this.dgvHoNV.HeaderText = "Họ nhân viên";
-            this.dgvHoNV.MinimumWidth = 8;
-            this.dgvHoNV.Name = "dgvHoNV";
-            this.dgvHoNV.ReadOnly = true;
-            // 
             // dgvNgayTrongTuan
             // 
             this.dgvNgayTrongTuan.DataPropertyName = "NgayTrongTuan";
+            this.dgvNgayTrongTuan.FillWeight = 60.29476F;
             this.dgvNgayTrongTuan.HeaderText = "Ngày trong tuần";
             this.dgvNgayTrongTuan.MinimumWidth = 8;
             this.dgvNgayTrongTuan.Name = "dgvNgayTrongTuan";
@@ -248,21 +254,27 @@
             // 
             // dgvEdit
             // 
+            this.dgvEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvEdit.FillWeight = 50F;
             this.dgvEdit.HeaderText = "";
             this.dgvEdit.Image = global::GUI.Properties.Resources.edit;
             this.dgvEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvEdit.MinimumWidth = 8;
+            this.dgvEdit.MinimumWidth = 50;
             this.dgvEdit.Name = "dgvEdit";
             this.dgvEdit.ReadOnly = true;
+            this.dgvEdit.Width = 50;
             // 
             // dgvDelete
             // 
+            this.dgvDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvDelete.FillWeight = 50F;
             this.dgvDelete.HeaderText = "";
             this.dgvDelete.Image = global::GUI.Properties.Resources.delete;
             this.dgvDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvDelete.MinimumWidth = 8;
+            this.dgvDelete.MinimumWidth = 50;
             this.dgvDelete.Name = "dgvDelete";
             this.dgvDelete.ReadOnly = true;
+            this.dgvDelete.Width = 50;
             // 
             // frmShiftSchedule
             // 
@@ -294,10 +306,10 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dpDate;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvHoNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvTenNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaCa;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNgayLam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvTenNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvHoNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNgayTrongTuan;
         private System.Windows.Forms.DataGridViewImageColumn dgvEdit;
         private System.Windows.Forms.DataGridViewImageColumn dgvDelete;

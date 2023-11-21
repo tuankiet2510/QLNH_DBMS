@@ -91,6 +91,13 @@ namespace GUI
                     }
                 }
             }
+            else if(dgvShift.CurrentCell.OwningColumn.Name == "dgvCreateAssignment")
+            {
+                frmShiftScheduleAdd frm = new frmShiftScheduleAdd();
+                frm.cbbMaCa.Text = dgvShift.CurrentRow.Cells["dgvMaCa"].Value.ToString();
+                frm.DTPNgay.Value = Convert.ToDateTime(dgvShift.CurrentRow.Cells["dgvNgayLam"].Value);
+                frm.ShowDialog();
+            }
         }
 
         private void frmShift_Load(object sender, EventArgs e)
