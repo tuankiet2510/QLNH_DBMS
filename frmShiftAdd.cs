@@ -17,21 +17,29 @@ namespace GUI
     {
         ShiftBUS shiftBUS;
         ShiftDTO shiftDTO;
+        List<String> listMaCa;
+        public bool add;
         public frmShiftAdd()
         {
             InitializeComponent();
+            listMaCa = new List<String>();
+            listMaCa.Add("ca1");
+            listMaCa.Add("ca2");
+            listMaCa.Add("ca3");
+            cbbMaCa.DataSource = listMaCa;
             shiftBUS = new ShiftBUS();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtMaCa.ReadOnly == true) //Chỉnh sửa ca
+            //if (txtMaCa.ReadOnly == true) //Chỉnh sửa ca
+            if (add == false)
             {
                     /*string displayValue = cbbCateID.Text;
                     string[] splitValues = displayValue.Split('-');
                     string madm = splitValues[0];
                     string tendm = splitValues[1];*/
-                    shiftDTO = new ShiftDTO(txtMaCa.Text,Convert.ToDateTime(DTPNgay.Value), DTPStartTime.Value.ToShortTimeString(), DTPEndTime.Value.ToShortTimeString());
+                    shiftDTO = new ShiftDTO(cbbMaCa.Text,Convert.ToDateTime(DTPNgay.Value), DTPStartTime.Value.ToShortTimeString(), DTPEndTime.Value.ToShortTimeString());
 
                     if (shiftBUS.updateShift(shiftDTO))
                     {
@@ -44,15 +52,16 @@ namespace GUI
                
             }
 
-            else //Thêm món
+            else //Thêm ca làm
             {
 
-                shiftDTO = new ShiftDTO(txtMaCa.Text, Convert.ToDateTime(DTPNgay.Value), DTPStartTime.Value.ToShortTimeString(), DTPEndTime.Value.ToShortTimeString());
+                // shiftDTO = new ShiftDTO(cbbMaCa.Text, Convert.ToDateTime(DTPNgay.Value), DTPStartTime.Value.ToShortTimeString(), DTPEndTime.Value.ToShortTimeString());
+                shiftDTO = new ShiftDTO(cbbMaCa.Text, Convert.ToDateTime(DTPNgay.Value), DTPStartTime.Value.ToString("HH:mm:ss"), DTPEndTime.Value.ToString("HH:mm:ss"));
                 if (shiftBUS.createShift(shiftDTO))
                     {
                         MessageBox.Show("Đã thêm xong!");
                     }
-                    else
+                 else
                     {
                         MessageBox.Show("Thêm không thành công. Lỗi: '" + shiftBUS.err);
                     }
@@ -64,6 +73,15 @@ namespace GUI
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbbMaCa_SelectedValueChanged(object sender, EventArgs e)
+        {
+            /*if(cbbMaCa.Text == listMaCa[0])
+            {
+                DTPStartTime.Value = 
+                DTPEndTime.Value = 
+            }*/
         }
     }
 }

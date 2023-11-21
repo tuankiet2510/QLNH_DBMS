@@ -45,6 +45,33 @@ namespace DAO
 
             return dtcategory;
         }
+        public DataTable getAllPartTime()
+        {
+           
+            
+
+            string query = "SELECT * FROM V_NVBanThoiGian";
+
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+           
+            DataTable dtTemp = new DataTable();
+            dtTemp.Clear();
+            sda.Fill(dtTemp);
+            
+            con.Close();
+            DataTable dtEmp = new DataTable();
+            dtEmp.Clear();
+            dtEmp.Columns.Add("ID");
+            dtEmp.Columns.Add("Display");
+            foreach (DataRow row in dtTemp.Rows)
+            {
+                object[] ID = { row["MaNV"].ToString(), row["HoNV"].ToString() , row["TenNV"].ToString() };
+                string Display = row["MaNV"].ToString() + "-" + row["HoNV"].ToString() + "-" + row["TenNV"].ToString();
+                dtEmp.Rows.Add(ID, Display);
+            }
+            return dtEmp;
+        }
 
         public DataTable searchEmployee(EmployeeDTO employee, string type)
         {
@@ -198,6 +225,7 @@ namespace DAO
             catch (SqlException ex)
             {
                 err = ex.Message;
+                Console.WriteLine("A");
             }
             finally
             {

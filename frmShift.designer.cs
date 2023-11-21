@@ -51,6 +51,7 @@
             this.lblProduct = new System.Windows.Forms.Label();
             this.lblSearchProduct = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.btnBangPhanCong = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShift)).BeginInit();
             this.SuspendLayout();
             // 
@@ -314,11 +315,27 @@
             this.guna2Separator1.Size = new System.Drawing.Size(1533, 12);
             this.guna2Separator1.TabIndex = 15;
             // 
+            // btnBangPhanCong
+            // 
+            this.btnBangPhanCong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBangPhanCong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBangPhanCong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBangPhanCong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBangPhanCong.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBangPhanCong.ForeColor = System.Drawing.Color.White;
+            this.btnBangPhanCong.Location = new System.Drawing.Point(371, 63);
+            this.btnBangPhanCong.Name = "btnBangPhanCong";
+            this.btnBangPhanCong.Size = new System.Drawing.Size(204, 79);
+            this.btnBangPhanCong.TabIndex = 17;
+            this.btnBangPhanCong.Text = "Bảng phân công";
+            this.btnBangPhanCong.Click += new System.EventHandler(this.btnBangPhanCong_Click);
+            // 
             // frmShift
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1611, 945);
+            this.Controls.Add(this.btnBangPhanCong);
             this.Controls.Add(this.txtSearchShift);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvShift);
@@ -354,5 +371,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNgayTrongTuan;
         private System.Windows.Forms.DataGridViewImageColumn dgvEdit;
         private System.Windows.Forms.DataGridViewImageColumn dgvDel;
+        private Guna.UI2.WinForms.Guna2Button btnBangPhanCong;
     }
 }

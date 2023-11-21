@@ -16,28 +16,22 @@ namespace GUI
     {
         public EmployeeBUS employeeBUS;
         public EmployeeDTO employeeDTO;
+        JobBUS jobBUS;
+        List<String> listHinhThuc;
         public frmStaffDetail()
         {
             InitializeComponent();
             employeeBUS = new EmployeeBUS();
+            jobBUS = new JobBUS();
+            cbbMaCV.DataSource = jobBUS.MaTenCongViec();
+            cbbMaCV.ValueMember = "ID";
+            cbbMaCV.DisplayMember = "Display";
+            listHinhThuc = new List<String>();
+            listHinhThuc.Add("Bán thời gian");
+            listHinhThuc.Add("Toàn thời gian");
+            cmbHinhThuc.DataSource = listHinhThuc;
         }
 
-        public frmStaffDetail(EmployeeDTO employee)
-        {
-            InitializeComponent();
-            employeeBUS = new EmployeeBUS();
-            employeeDTO = employee;
-            txtMaNV.Text = employee.MaNV;
-            txtHoNV.Text = employee.HoNV;
-            txtTenNV.Text = employee.TenNV;
-            dtpNgaySinh.Value = employee.NgaySinh;
-            txtSDT.Text = employee.SDT;
-            txtMaCV.Text = employee.MaCV;
-            txtSoCa.Text = employee.Soca.ToString();
-            txtThuong.Text = employee.Thuong.ToString();
-            dtpNgayTD.Value = employee.NgayTuyenDung;
-            cmbHinhThuc.Text = employee.HTcongviec;
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -61,19 +55,25 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Thêm không thành công");
+                    MessageBox.Show("Thêm không thành công" + employeeBUS.err);
                 }
             }
             else //Sua nv
             {
-                if(employeeBUS.editEmployee(employeeDTO))
+                string displayValue = cbbMaCV.Text;
+                string[] splitValues = displayValue.Split('-');
+                string macv = splitValues[0];
+                string tencv = splitValues[1];
+                employeeDTO = new EmployeeDTO(txtMaNV.Text, txtHoNV.Text, txtTenNV.Text, dtpNgaySinh.Value, txtSDT.Text, macv, Convert.ToInt32(txtSoCa.Text), Convert.ToInt32(txtThuong.Text),
+                   dtpNgayTD.Value, cmbHinhThuc.Text);
+                if (employeeBUS.editEmployee(employeeDTO))
                 {
                     MessageBox.Show("Đã chỉnh sửa xong!");
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Chỉnh sửa không thành công");
+                    MessageBox.Show("Chỉnh sửa không thành công " + employeeBUS.err);
                 }
             }
         }
@@ -81,6 +81,11 @@ namespace GUI
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbbMaCV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

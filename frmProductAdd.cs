@@ -18,6 +18,7 @@ namespace QLNH_DBMS
         ProductBUS productbus;
         ProductDTO productDTO;
         List<String> listProstate;
+
         public frmProductAdd()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace QLNH_DBMS
             listProstate.Add("Còn");
             listProstate.Add("Hết");
             cbbState.DataSource = listProstate;
+            
         }
         private void btnClose_Click(object sender, EventArgs e)
         {

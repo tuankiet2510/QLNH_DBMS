@@ -36,6 +36,7 @@ namespace BUS
         {
             return employeeDAO.getAllWaiter();
         }
+        public DataTable getAllPartTime() { return employeeDAO.getAllPartTime(); }
         public bool addEmployee(EmployeeDTO employeeDTO)
         {
             return employeeDAO.Add_Employee(employeeDTO, ref err);

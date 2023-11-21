@@ -1,59 +1,57 @@
-﻿using System;
+﻿using DAO.DBConnect;
+using DTO;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAO.DBConnect;
-using DTO;
-using System.IO;
-using System.Drawing;
 
 namespace DAO
 {
-    public class ShiftDAO
+    public class AssignmentDAO
     {
         DataTable dtShift;
         SqlConnection con;
-        
-        public ShiftDAO(string role = null) {
+        public AssignmentDAO(string role = null)
+        {
             con = getConnection.GetSqlConnection();
         }
-        public DataTable GetShiftsByDate(string dateTime)
+        public bool createAssigment(AssignmentDTO assignmentDTO, ref string err)
         {
-            DataTable dtTable = new DataTable();
-
-            string query = $"proc_GetCaLamViecByDate @NgayLam = '{dateTime}'";
+            string queryInsert = "proc_PhanCong @MaCa, @MaNV, @NgayLam";
+            SqlConnection con = getConnection.GetSqlConnection();
             try
             {
+                MemoryStream ms = new MemoryStream();
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter(query, con);
-                sda.Fill(dtTable);
+                SqlCommand cmd = new SqlCommand(queryInsert, con);
+                cmd.Parameters.AddRange(new[]
+                {
+                    new SqlParameter("@MaCa", assignmentDTO.ShiftId),
+                    new SqlParameter("@MaNV", assignmentDTO.EmployeeId),
+                    new SqlParameter("@NgayLam", assignmentDTO.WorkingDate.ToString("yyyy-MM-dd"))
+                });
+                if (cmd.ExecuteNonQuery() > 0)
+                    return true;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                throw (ex);
+                err = ex.Message;
+
             }
             finally
             {
                 con.Close();
             }
-            return dtTable;    
+            return false;
         }
-        public DataTable GetAllShift() //Lấy tất cả danh mục sản phẩm
+        public DataTable GetAllShiftAssignment() //Lấy tất cả danh mục sản phẩm
         {
-            /*string queryView = "SELECT * FROM V_caLamViec";
-            dtShift = new DataTable();
-            dtShift.Clear();
-            con.Open();
-            SqlDataAdapter sda = new SqlDataAdapter(queryView, con);
-            con.Close();
-            sda.Fill(dtShift);
-            return dtShift;*/
-
-
-            string queryView = "SELECT * FROM V_caLamViec";
+          
+            string queryView = "SELECT * FROM v_TatCaBangPhanCa";
             dtShift = new DataTable();
 
             // Mở kết nối đến cơ sở dữ liệu
@@ -80,11 +78,10 @@ namespace DAO
                 row["NgayTrongTuan"] = ngayTrongTuan;
             }
             return dtShift;
-
         }
-        public bool removeShift(ShiftDTO shiftDTO, ref string err)
+        public bool removeShift(AssignmentDTO assignmentDTO, ref string err)
         {
-            string queryDelete = "proc_xoaCaLam @MaCa , @NgayLam";
+            string queryDelete = "proc_xoaPhanCong @MaCa , @NgayLam";
             //SqlConnection conn = getConnection.GetSqlConnection();
             try
             {
@@ -92,8 +89,8 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand(queryDelete, con);
                 cmd.Parameters.AddRange(new[]
                 {
-                    new SqlParameter("@MaCa", shiftDTO.Id),
-                    new SqlParameter("@NgayLam",shiftDTO.WorkingDate.ToString("yyyy-MM-dd"))
+                    new SqlParameter("@MaCa", assignmentDTO.ShiftId),
+                    new SqlParameter("@NgayLam",assignmentDTO.WorkingDate.ToString("yyyy-MM-dd"))
                 });
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
@@ -109,9 +106,9 @@ namespace DAO
             }
             return false;
         }
-        public bool updateShift(ShiftDTO shiftDTO, ref string err)
+        public bool updateShift(AssignmentDTO assignmentDTO, ref string err)
         {
-            string queryDelete = "proc_suaCaLam @MaCa , @NgayLam, @GioBatDau , @GioKetThuc";
+            string queryDelete = "proc_suaPhanCong @MaNV, @HoNV , @TenNV , @MaCa , @NgayLam";
             //SqlConnection conn = getConnection.GetSqlConnection();
             try
             {
@@ -119,10 +116,12 @@ namespace DAO
                 SqlCommand cmd = new SqlCommand(queryDelete, con);
                 cmd.Parameters.AddRange(new[]
                 {
-                    new SqlParameter("@MaCa", shiftDTO.Id),
-                    new SqlParameter("@NgayLam",shiftDTO.WorkingDate.ToString("yyyy-MM-dd")),
-                     new SqlParameter("@BatDau", shiftDTO.StartTime),
-                    new SqlParameter("@KetThuc", shiftDTO.EndTime)
+                     new SqlParameter("@MaNV", assignmentDTO.EmployeeId),
+                      new SqlParameter("@HoNV", assignmentDTO.HoNV),
+                          new SqlParameter("@TenNV", assignmentDTO.TenNV),
+                    new SqlParameter("@MaCa", assignmentDTO.ShiftId),
+                    new SqlParameter("@NgayLam",assignmentDTO.WorkingDate.ToString("yyyy-MM-dd")),
+                  
                 });
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
@@ -138,21 +137,22 @@ namespace DAO
             }
             return false;
         }
-        public bool createShift(ShiftDTO shiftDTO, ref string err)
+        public bool createShift(AssignmentDTO assignmentDTO, ref string err)
         {
-            string queryInsert = "proc_ThemCaLam @MaCa, @NgayLam, @GioBatDau , @GioKetThuc";
-         
+            string queryInsert = "proc_ThemPhanCong @MaNV, @HoNV , @TenNV , @MaCa , @NgayLam";
+
             try
             {
-                
+
                 con.Open();
                 SqlCommand cmd = new SqlCommand(queryInsert, con);
                 cmd.Parameters.AddRange(new[]
                 {
-                    new SqlParameter("@MaCa", shiftDTO.Id),
-                    new SqlParameter("@NgayLam", shiftDTO.WorkingDate.ToString("yyyy-MM-dd")),
-                    new SqlParameter("@GioBatDau", shiftDTO.StartTime),
-                    new SqlParameter("@GioKetThuc", shiftDTO.EndTime)
+                    new SqlParameter("@MaNV", assignmentDTO.EmployeeId),
+                      new SqlParameter("@HoNV", assignmentDTO.HoNV),
+                          new SqlParameter("@TenNV", assignmentDTO.TenNV),
+                    new SqlParameter("@MaCa", assignmentDTO.ShiftId),
+                    new SqlParameter("@NgayLam",assignmentDTO.WorkingDate.ToString("yyyy-MM-dd")),
                 });
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
@@ -168,6 +168,5 @@ namespace DAO
             }
             return false;
         }
-     
     }
 }

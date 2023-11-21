@@ -39,9 +39,9 @@ namespace BUS
         {
             return shiftDAO.updateShift(shiftDTO, ref err);
         }
-        public bool createAssignment(AssignmentDTO assignmentDTO)
+       /* public bool createAssignment(AssignmentDTO assignmentDTO)
         {
             return shiftDAO.createAssigment(assignmentDTO, ref err  );
-        }
+        }*/
     }
 }

@@ -35,6 +35,7 @@
             this.pnlControlBox = new System.Windows.Forms.Panel();
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.btnReview = new Guna.UI2.WinForms.Guna2Button();
             this.btnTask = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
@@ -46,7 +47,6 @@
             this.btnProduct = new Guna.UI2.WinForms.Guna2Button();
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.pnlControlBox.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -137,6 +137,31 @@
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // btnCustomer
+            // 
+            this.btnCustomer.AutoRoundedCorners = true;
+            this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.btnCustomer.BorderRadius = 39;
+            this.btnCustomer.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnCustomer.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(85)))), ((int)(((byte)(126)))));
+            this.btnCustomer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCustomer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCustomer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCustomer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCustomer.FillColor = System.Drawing.Color.Transparent;
+            this.btnCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomer.ForeColor = System.Drawing.Color.White;
+            this.btnCustomer.Image = global::GUI.Properties.Resources.staff;
+            this.btnCustomer.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCustomer.ImageSize = new System.Drawing.Size(44, 44);
+            this.btnCustomer.Location = new System.Drawing.Point(-5, 505);
+            this.btnCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.Size = new System.Drawing.Size(241, 81);
+            this.btnCustomer.TabIndex = 11;
+            this.btnCustomer.Text = "Khách hàng";
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
+            // 
             // btnReview
             // 
             this.btnReview.AutoRoundedCorners = true;
@@ -179,7 +204,7 @@
             this.btnTask.Image = global::GUI.Properties.Resources.task;
             this.btnTask.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTask.ImageSize = new System.Drawing.Size(44, 44);
-            this.btnTask.Location = new System.Drawing.Point(-5, 919);
+            this.btnTask.Location = new System.Drawing.Point(-5, 896);
             this.btnTask.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTask.Name = "btnTask";
             this.btnTask.Size = new System.Drawing.Size(241, 81);
@@ -204,7 +229,7 @@
             this.btnAccount.Image = global::GUI.Properties.Resources.user1;
             this.btnAccount.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAccount.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnAccount.Location = new System.Drawing.Point(-5, 823);
+            this.btnAccount.Location = new System.Drawing.Point(-5, 795);
             this.btnAccount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(241, 81);
@@ -255,7 +280,7 @@
             this.btnReport.Image = global::GUI.Properties.Resources.icons8_report_64__1_;
             this.btnReport.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnReport.ImageSize = new System.Drawing.Size(48, 48);
-            this.btnReport.Location = new System.Drawing.Point(-5, 734);
+            this.btnReport.Location = new System.Drawing.Point(-5, 706);
             this.btnReport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(241, 81);
@@ -280,7 +305,7 @@
             this.btnStaff.Image = global::GUI.Properties.Resources.staff;
             this.btnStaff.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnStaff.ImageSize = new System.Drawing.Size(44, 44);
-            this.btnStaff.Location = new System.Drawing.Point(-1, 442);
+            this.btnStaff.Location = new System.Drawing.Point(-9, 405);
             this.btnStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStaff.Name = "btnStaff";
             this.btnStaff.Size = new System.Drawing.Size(241, 81);
@@ -305,7 +330,7 @@
             this.btnPOS.Image = global::GUI.Properties.Resources.point_of_sale__1_;
             this.btnPOS.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPOS.ImageSize = new System.Drawing.Size(48, 48);
-            this.btnPOS.Location = new System.Drawing.Point(-5, 634);
+            this.btnPOS.Location = new System.Drawing.Point(-5, 594);
             this.btnPOS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPOS.Name = "btnPOS";
             this.btnPOS.Size = new System.Drawing.Size(241, 81);
@@ -330,7 +355,7 @@
             this.btnTables.Image = global::GUI.Properties.Resources.table;
             this.btnTables.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTables.ImageSize = new System.Drawing.Size(48, 48);
-            this.btnTables.Location = new System.Drawing.Point(-5, 326);
+            this.btnTables.Location = new System.Drawing.Point(-5, 300);
             this.btnTables.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTables.Name = "btnTables";
             this.btnTables.Size = new System.Drawing.Size(241, 81);
@@ -400,31 +425,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // btnCustomer
-            // 
-            this.btnCustomer.AutoRoundedCorners = true;
-            this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
-            this.btnCustomer.BorderRadius = 39;
-            this.btnCustomer.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnCustomer.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(85)))), ((int)(((byte)(126)))));
-            this.btnCustomer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCustomer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCustomer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCustomer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCustomer.FillColor = System.Drawing.Color.Transparent;
-            this.btnCustomer.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomer.ForeColor = System.Drawing.Color.White;
-            this.btnCustomer.Image = global::GUI.Properties.Resources.staff;
-            this.btnCustomer.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCustomer.ImageSize = new System.Drawing.Size(44, 44);
-            this.btnCustomer.Location = new System.Drawing.Point(-1, 545);
-            this.btnCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(241, 81);
-            this.btnCustomer.TabIndex = 11;
-            this.btnCustomer.Text = "Khách hàng";
-            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // frmMain
             // 

@@ -31,10 +31,12 @@ namespace GUI
             if (dgvShift.CurrentCell.OwningColumn.Name == "dgvEdit")
             {
                 frmShiftAdd frm  = new frmShiftAdd();
-                frm.txtMaCa.Text = dgvShift.CurrentRow.Cells["dgvMaCa"].Value.ToString();
-                frm.txtMaCa.ReadOnly = true;
+                frm.cbbMaCa.Text = dgvShift.CurrentRow.Cells["dgvMaCa"].Value.ToString();
+               
+                //frm.txtMaCa.ReadOnly = true;
                 frm.DTPNgay.Value = (DateTime)dgvShift.CurrentRow.Cells["dgvNgayLam"].Value;
-                frm.DTPNgay.Enabled = false;
+                // frm.DTPNgay.Enabled = false;
+                frm.add = false;
                 // Lấy giá trị ngày từ DataGridView và chuyển đổi sang DateTime
                 DateTime ngayLam = Convert.ToDateTime(dgvShift.CurrentRow.Cells["dgvNgayLam"].Value);
 
@@ -118,7 +120,8 @@ namespace GUI
             /* frm.cbbCateID.DataSource = productBus.LayDanhSachDanhMuc();
              frm.cbbCateID.ValueMember = "ID";
              frm.cbbCateID.DisplayMember = "Display";*/
-            frm.txtMaCa.ReadOnly = false;
+            // frm.txtMaCa.ReadOnly = false;
+            frm.add = true;
             
             frm.ShowDialog();
             LoadData();
@@ -127,6 +130,12 @@ namespace GUI
         private void txtSearchProduct_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBangPhanCong_Click(object sender, EventArgs e)
+        {
+            frmShiftSchedule frm = new frmShiftSchedule();
+            frm.ShowDialog(this);
         }
     }
 }

@@ -23,6 +23,7 @@ namespace GUI
         public string CustomerPhone = "";
         public int BillID = 0;
         public int DetailID;
+        bool successPaid;
         DataTable dtDM;
         DataTable dtSP;
         DataTable dtTblJoin;
@@ -61,8 +62,8 @@ namespace GUI
             listTstate.Add("Đã đặt");
             listTstate.Add("Đang dùng");
             listBillstate = new List<string>();
-            listTstate.Add("Chưa thanh toán");
-            listTstate.Add("Đã thanh toán");
+            listBillstate.Add("Chưa thanh toán");
+            listBillstate.Add("Đã thanh toán");
             listPaymentMethod = new List<string>();
             listPaymentMethod.Add("Tiền mặt");
             listPaymentMethod.Add("Thanh toán nhanh");
@@ -512,6 +513,39 @@ namespace GUI
 
         private void btnFastCard_Click(object sender, EventArgs e)
         {
+            billDTO.Pttt = listPaymentMethod[1];
+            billDTO.TrangThai = listBillstate[1];
+            if (billBUS.UpdateBill(billDTO))
+            {
+                //   guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+                guna2MessageDialog1.Show("Thanh toán hóa đơn thành công");
+                tableBUS = new TableBUS();
+                tableDTO = new TableDTO(TableID, listTstate[0], null, null);
+                if (tableBUS.UpdateTrangThaiBan(tableDTO))
+                {
+                    MessageBox.Show("Cập nhật trạng thái trống cho bàn thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật không thành công. Lỗi: '" + tableBUS.err + "'");
+
+                }
+
+                lblTable.Text = "";
+                lblWaiter.Text = "";
+                lblCustomer.Text = "";
+                /* lblWaiter.Visible = false;
+                 lblTable.Visible = false;*/
+                lblTotal.Text = "0";
+                dgvPOS.Rows.Clear();
+
+                BillID = 0;
+                DetailID = 0;
+            }
+            else
+            {
+                guna2MessageDialog1.Show("Thanh toán không thành công " + billBUS.err);
+            }
 
         }
 

@@ -16,10 +16,17 @@ namespace GUI
     {
         BillBUS billBUS;
         public BillDTO billDTO = null;
+        List<String> listBillstate;
+
         public frmCheckOut()
         {
             InitializeComponent();
+            listBillstate = new List<string>();
+            listBillstate.Add("Chưa thanh toán");
+            listBillstate.Add("Đã thanh toán");
+            btnSave.Enabled = false;
             billBUS = new BillBUS();
+
             //billDTO = new BillDTO();
         }
         public double amt = 0;
@@ -33,7 +40,7 @@ namespace GUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+            billDTO.TrangThai = listBillstate[1];
             if (billBUS.UpdateBill(billDTO))
             {
                 //   guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
@@ -52,6 +59,10 @@ namespace GUI
             double.TryParse(txtReceived.Text, out received);
             change = Math.Abs(amt - received);
             txtChange.Text = change.ToString();
+            if(change == 0)
+            {
+                btnSave.Enabled = true;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

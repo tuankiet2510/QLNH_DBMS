@@ -38,11 +38,15 @@
             this.lblShift = new System.Windows.Forms.Label();
             this.lblSearchProduct = new System.Windows.Forms.Label();
             this.dpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.dgvMaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvMaCa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvNgayLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvHoNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvNgayTrongTuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dgvDelete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShift)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,11 +72,14 @@
             this.dgvShift.ColumnHeadersHeight = 40;
             this.dgvShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvShift.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvMaNV,
             this.dgvMaCa,
             this.dgvNgayLam,
             this.dgvTenNV,
             this.dgvHoNV,
-            this.dgvNgayTrongTuan});
+            this.dgvNgayTrongTuan,
+            this.dgvEdit,
+            this.dgvDelete});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,7 +89,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvShift.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvShift.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvShift.Location = new System.Drawing.Point(3, 203);
+            this.dgvShift.Location = new System.Drawing.Point(3, 187);
             this.dgvShift.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.dgvShift.Name = "dgvShift";
             this.dgvShift.ReadOnly = true;
@@ -99,7 +106,7 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.IndianRed;
             this.dgvShift.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvShift.RowTemplate.Height = 35;
-            this.dgvShift.Size = new System.Drawing.Size(1585, 821);
+            this.dgvShift.Size = new System.Drawing.Size(1628, 821);
             this.dgvShift.TabIndex = 13;
             this.dgvShift.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvShift.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -122,6 +129,7 @@
             this.dgvShift.ThemeStyle.RowsStyle.Height = 35;
             this.dgvShift.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvShift.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvShift.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShift_CellClick);
             // 
             // btnAdd
             // 
@@ -131,7 +139,7 @@
             this.btnAdd.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnAdd.ImageRotate = 0F;
             this.btnAdd.IndicateFocus = true;
-            this.btnAdd.Location = new System.Drawing.Point(50, 65);
+            this.btnAdd.Location = new System.Drawing.Point(50, 49);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.PressedState.ImageSize = new System.Drawing.Size(64, 64);
@@ -143,11 +151,11 @@
             // 
             this.lblShift.AutoSize = true;
             this.lblShift.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShift.Location = new System.Drawing.Point(48, 14);
+            this.lblShift.Location = new System.Drawing.Point(283, 24);
             this.lblShift.Name = "lblShift";
-            this.lblShift.Size = new System.Drawing.Size(119, 45);
+            this.lblShift.Size = new System.Drawing.Size(254, 45);
             this.lblShift.TabIndex = 14;
-            this.lblShift.Text = "Ca làm";
+            this.lblShift.Text = "BẢNG PHÂN CA";
             // 
             // lblSearchProduct
             // 
@@ -156,7 +164,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSearchProduct.AutoSize = true;
             this.lblSearchProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchProduct.Location = new System.Drawing.Point(1134, 14);
+            this.lblSearchProduct.Location = new System.Drawing.Point(837, 37);
             this.lblSearchProduct.Name = "lblSearchProduct";
             this.lblSearchProduct.Size = new System.Drawing.Size(113, 29);
             this.lblSearchProduct.TabIndex = 17;
@@ -168,7 +176,7 @@
             this.dpDate.FillColor = System.Drawing.Color.PaleGreen;
             this.dpDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dpDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dpDate.Location = new System.Drawing.Point(1140, 65);
+            this.dpDate.Location = new System.Drawing.Point(842, 90);
             this.dpDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dpDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dpDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -177,6 +185,26 @@
             this.dpDate.TabIndex = 19;
             this.dpDate.Value = new System.DateTime(2023, 11, 6, 15, 38, 45, 313);
             this.dpDate.ValueChanged += new System.EventHandler(this.dpDate_ValueChanged);
+            // 
+            // guna2ControlBox1
+            // 
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(152)))), ((int)(((byte)(166)))));
+            this.guna2ControlBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1568, 0);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.Size = new System.Drawing.Size(72, 69);
+            this.guna2ControlBox1.TabIndex = 20;
+            this.guna2ControlBox1.Click += new System.EventHandler(this.guna2ControlBox1_Click);
+            // 
+            // dgvMaNV
+            // 
+            this.dgvMaNV.DataPropertyName = "MaNV";
+            this.dgvMaNV.HeaderText = "Mã nhân viên";
+            this.dgvMaNV.MinimumWidth = 8;
+            this.dgvMaNV.Name = "dgvMaNV";
+            this.dgvMaNV.ReadOnly = true;
             // 
             // dgvMaCa
             // 
@@ -212,15 +240,35 @@
             // 
             // dgvNgayTrongTuan
             // 
+            this.dgvNgayTrongTuan.DataPropertyName = "NgayTrongTuan";
             this.dgvNgayTrongTuan.HeaderText = "Ngày trong tuần";
             this.dgvNgayTrongTuan.MinimumWidth = 8;
             this.dgvNgayTrongTuan.Name = "dgvNgayTrongTuan";
             this.dgvNgayTrongTuan.ReadOnly = true;
             // 
+            // dgvEdit
+            // 
+            this.dgvEdit.HeaderText = "";
+            this.dgvEdit.Image = global::GUI.Properties.Resources.edit;
+            this.dgvEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvEdit.MinimumWidth = 8;
+            this.dgvEdit.Name = "dgvEdit";
+            this.dgvEdit.ReadOnly = true;
+            // 
+            // dgvDelete
+            // 
+            this.dgvDelete.HeaderText = "";
+            this.dgvDelete.Image = global::GUI.Properties.Resources.delete;
+            this.dgvDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvDelete.MinimumWidth = 8;
+            this.dgvDelete.Name = "dgvDelete";
+            this.dgvDelete.ReadOnly = true;
+            // 
             // frmShiftSchedule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1600, 1022);
+            this.ClientSize = new System.Drawing.Size(1643, 1022);
+            this.Controls.Add(this.guna2ControlBox1);
             this.Controls.Add(this.dpDate);
             this.Controls.Add(this.lblSearchProduct);
             this.Controls.Add(this.btnAdd);
@@ -244,10 +292,14 @@
         private System.Windows.Forms.Label lblShift;
         private System.Windows.Forms.Label lblSearchProduct;
         private Guna.UI2.WinForms.Guna2DateTimePicker dpDate;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvMaCa;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNgayLam;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTenNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvHoNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNgayTrongTuan;
+        private System.Windows.Forms.DataGridViewImageColumn dgvEdit;
+        private System.Windows.Forms.DataGridViewImageColumn dgvDelete;
     }
 }

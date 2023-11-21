@@ -83,7 +83,8 @@ namespace QLNH_DBMS
             {
                 int row = dgvProduct.CurrentCell.RowIndex;
                 frmProductAdd frm = new frmProductAdd();
-
+                frm.cbbCategory.DataSource = productBus.getAllCategory();
+                frm.cbbCategory.DisplayMember = "LoaiSP";
                 /*frm.cbbCateID.DataSource = dbDM.LayDanhSachDanhMuc();
                 frm.cbbCateID.ValueMember = "ID";
                 frm.cbbCateID.DisplayMember = "Display";*/
@@ -97,11 +98,11 @@ namespace QLNH_DBMS
              frm.txtPrice.Text = dgvProduct.Rows[row].Cells["dgvPrice"].Value.ToString();*/
                 frm.txtProductID.Text = dgvProduct.CurrentRow.Cells["dgvMaSP"].Value.ToString();
                 frm.txtProductName.Text = dgvProduct.CurrentRow.Cells["dgvTenSP"].Value.ToString();
-                frm.cbbCategory.SelectedIndex = frm.cbbState.Items.IndexOf(dgvProduct.CurrentRow.Cells["dgvCategory"].Value.ToString());
+                //frm.cbbCategory.SelectedIndex = frm.cbbState.Items.IndexOf(dgvProduct.CurrentRow.Cells["dgvCategory"].Value.ToString());
                 // frm.txtCategory.Text = dgvProduct.CurrentRow.Cells["dgvCategory"].Value.ToString();
 
-                //frm.cbbState.Text = dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString();
-                frm.cbbState.SelectedIndex = frm.cbbState.Items.IndexOf(dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString());
+                frm.cbbCategory.Text = dgvProduct.CurrentRow.Cells["dgvCategory"].Value.ToString();
+                frm.cbbState.Text = dgvProduct.CurrentRow.Cells["dgvState"].Value.ToString();
                 frm.txtPrice.Text = dgvProduct.CurrentRow.Cells["dgvPrice"].Value.ToString();
              
                 frm.txtProductID.ReadOnly = true; //Chỉnh sửa

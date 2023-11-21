@@ -14,13 +14,34 @@ namespace GUI
 {
     public partial class frmShiftScheduleAdd : Form
     {
-        ShiftBUS shiftBUS = new ShiftBUS();
+        EmployeeBUS emBUS;
+        ShiftBUS shiftBUS;
+        AssignmentBUS assignmentBUS;
+        public bool add;
+        List<String> listMaCa;
         public frmShiftScheduleAdd()
         {
             InitializeComponent();
+            listMaCa = new List<String>();
+            listMaCa.Add("ca1");
+            listMaCa.Add("ca2");
+            listMaCa.Add("ca3");
+            emBUS = new EmployeeBUS();
+             shiftBUS = new ShiftBUS();
+            assignmentBUS = new AssignmentBUS();
+            // Lấy DataTable chứa danh sách nhân viên bán thời gian
+            DataTable dtPartTimeEmployees = emBUS.getAllPartTime();
+
+            // Đặt DataSource cho cbbMaNV
+            cbbMaNV.DataSource = dtPartTimeEmployees;
+
+            // Đặt DisplayMember và ValueMember cho cbbMaNV
+            cbbMaNV.DisplayMember = "Display"; // Cột "MaNV" sẽ được hiển thị trong ComboBox
+            cbbMaNV.ValueMember = "ID"; // Giá trị của "MaNV" sẽ được sử dụng khi một item được chọn
+            cbbMaCa.DataSource = listMaCa;
         }
 
-        private void btnCreateShift_Click(object sender, EventArgs e)
+       /* private void btnCreateShift_Click(object sender, EventArgs e)
         {
             string shiftId = txtShiftId.Text;
             DateTime date = dpDate.Value;
@@ -32,7 +53,7 @@ namespace GUI
                 MessageBox.Show("Create shift Successfully");
             else
                 MessageBox.Show("Create shift Failed");
-        }
+        }*/
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -41,15 +62,41 @@ namespace GUI
 
         private void btnAssign_Click(object sender, EventArgs e)
         {
-            string shiftId = txtShiftId.Text;
-            string employeeId = txtNvId.Text;
-            DateTime date = dpDate.Value;
-            AssignmentDTO assignmentDTO = new AssignmentDTO(shiftId, employeeId, date);
-            bool success = shiftBUS.createAssignment(assignmentDTO);
-            if (success)
-                MessageBox.Show("Assign Successfully");
-            else
-                MessageBox.Show("Assign Failed");
+            string displayValue = cbbMaNV.Text;
+            string[] splitValues = displayValue.Split('-');
+            string manv = splitValues[0];
+            string honv = splitValues[1];
+            string tennv = splitValues[2];
+            if (add == true)
+            {
+
+                AssignmentDTO assignmentDTO = new AssignmentDTO(manv, cbbMaCa.Text, Convert.ToDateTime(DTPNgay.Value), honv, tennv);
+                bool success = assignmentBUS.createShift(assignmentDTO);
+                if (success)
+                {
+                    MessageBox.Show("Tạo phân công thành công");
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Gặp lỗi khi tạo phân công " + assignmentBUS.err);
+            }
+            else {
+                AssignmentDTO assignmentDTO = new AssignmentDTO(manv, cbbMaCa.Text, Convert.ToDateTime(DTPNgay.Value), honv, tennv);
+                bool success = assignmentBUS.updateShift(assignmentDTO);
+                if (success)
+                {
+                    MessageBox.Show("Cập nhật phân công thành công");
+                    this.Close();
+                }
+                    
+                else
+                    MessageBox.Show("Gặp lỗi khi cập nhật phân công " + assignmentBUS.err);
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

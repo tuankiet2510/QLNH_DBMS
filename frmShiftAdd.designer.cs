@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.DTPNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.txtMaCa = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblAdd = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.DTPStartTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.DTPEndTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.cbbMaCa = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
@@ -66,29 +66,6 @@
             this.DTPNgay.Size = new System.Drawing.Size(334, 51);
             this.DTPNgay.TabIndex = 85;
             this.DTPNgay.Value = new System.DateTime(2023, 11, 2, 19, 26, 59, 815);
-            // 
-            // txtMaCa
-            // 
-            this.txtMaCa.AutoRoundedCorners = true;
-            this.txtMaCa.BorderRadius = 24;
-            this.txtMaCa.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaCa.DefaultText = "";
-            this.txtMaCa.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaCa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaCa.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaCa.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaCa.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaCa.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMaCa.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaCa.Location = new System.Drawing.Point(232, 262);
-            this.txtMaCa.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtMaCa.Name = "txtMaCa";
-            this.txtMaCa.PasswordChar = '\0';
-            this.txtMaCa.PlaceholderText = "";
-            this.txtMaCa.ReadOnly = true;
-            this.txtMaCa.SelectedText = "";
-            this.txtMaCa.Size = new System.Drawing.Size(334, 51);
-            this.txtMaCa.TabIndex = 82;
             // 
             // label4
             // 
@@ -207,10 +184,10 @@
             this.guna2Panel2.Controls.Add(this.btnSave);
             this.guna2Panel2.Controls.Add(this.btnClose);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 473);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 467);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1257, 157);
+            this.guna2Panel2.Size = new System.Drawing.Size(1257, 163);
             this.guna2Panel2.TabIndex = 73;
             // 
             // label2
@@ -244,7 +221,7 @@
             this.DTPStartTime.Size = new System.Drawing.Size(187, 51);
             this.DTPStartTime.TabIndex = 91;
             this.DTPStartTime.UseTransparentBackground = true;
-            this.DTPStartTime.Value = new System.DateTime(2023, 6, 2, 9, 24, 5, 454);
+            this.DTPStartTime.Value = new System.DateTime(2023, 6, 2, 8, 0, 0, 0);
             // 
             // DTPEndTime
             // 
@@ -267,17 +244,34 @@
             this.DTPEndTime.Size = new System.Drawing.Size(187, 51);
             this.DTPEndTime.TabIndex = 93;
             this.DTPEndTime.UseTransparentBackground = true;
-            this.DTPEndTime.Value = new System.DateTime(2023, 6, 2, 9, 24, 5, 454);
+            this.DTPEndTime.Value = new System.DateTime(2023, 6, 2, 12, 0, 0, 0);
+            // 
+            // cbbMaCa
+            // 
+            this.cbbMaCa.BackColor = System.Drawing.Color.Transparent;
+            this.cbbMaCa.BorderRadius = 10;
+            this.cbbMaCa.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbMaCa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbMaCa.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbMaCa.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbMaCa.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbbMaCa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbbMaCa.ItemHeight = 30;
+            this.cbbMaCa.Location = new System.Drawing.Point(232, 268);
+            this.cbbMaCa.Name = "cbbMaCa";
+            this.cbbMaCa.Size = new System.Drawing.Size(334, 36);
+            this.cbbMaCa.TabIndex = 94;
+            this.cbbMaCa.SelectedValueChanged += new System.EventHandler(this.cbbMaCa_SelectedValueChanged);
             // 
             // frmShiftAdd
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1257, 630);
+            this.Controls.Add(this.cbbMaCa);
             this.Controls.Add(this.DTPEndTime);
             this.Controls.Add(this.DTPStartTime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DTPNgay);
-            this.Controls.Add(this.txtMaCa);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2Panel1);
@@ -297,7 +291,6 @@
 
         #endregion
         public Guna.UI2.WinForms.Guna2DateTimePicker DTPNgay;
-        public Guna.UI2.WinForms.Guna2TextBox txtMaCa;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label lblAdd;
@@ -310,5 +303,6 @@
         private System.Windows.Forms.Label label2;
         public Guna.UI2.WinForms.Guna2DateTimePicker DTPStartTime;
         public Guna.UI2.WinForms.Guna2DateTimePicker DTPEndTime;
+        public Guna.UI2.WinForms.Guna2ComboBox cbbMaCa;
     }
 }

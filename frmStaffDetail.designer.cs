@@ -47,7 +47,6 @@
             this.txtTenNV = new Guna.UI2.WinForms.Guna2TextBox();
             this.dtpNgaySinh = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.txtSDT = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtMaCV = new Guna.UI2.WinForms.Guna2TextBox();
             this.dtpNgayTD = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.cmbHinhThuc = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -318,7 +317,7 @@
             this.dtpNgaySinh.Name = "dtpNgaySinh";
             this.dtpNgaySinh.Size = new System.Drawing.Size(321, 41);
             this.dtpNgaySinh.TabIndex = 62;
-            this.dtpNgaySinh.Value = new System.DateTime(2023, 11, 2, 19, 26, 59, 815);
+            this.dtpNgaySinh.Value = new System.DateTime(2005, 10, 25, 0, 0, 0, 0);
             // 
             // txtSDT
             // 
@@ -341,28 +340,6 @@
             this.txtSDT.SelectedText = "";
             this.txtSDT.Size = new System.Drawing.Size(321, 41);
             this.txtSDT.TabIndex = 63;
-            // 
-            // txtMaCV
-            // 
-            this.txtMaCV.AutoRoundedCorners = true;
-            this.txtMaCV.BorderRadius = 19;
-            this.txtMaCV.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaCV.DefaultText = "";
-            this.txtMaCV.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaCV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaCV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaCV.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaCV.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaCV.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtMaCV.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaCV.Location = new System.Drawing.Point(818, 231);
-            this.txtMaCV.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtMaCV.Name = "txtMaCV";
-            this.txtMaCV.PasswordChar = '\0';
-            this.txtMaCV.PlaceholderText = "";
-            this.txtMaCV.SelectedText = "";
-            this.txtMaCV.Size = new System.Drawing.Size(321, 41);
-            this.txtMaCV.TabIndex = 64;
             // 
             // dtpNgayTD
             // 
@@ -396,9 +373,6 @@
             this.cmbHinhThuc.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbHinhThuc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbHinhThuc.ItemHeight = 30;
-            this.cmbHinhThuc.Items.AddRange(new object[] {
-            "Full-time",
-            "Part-time"});
             this.cmbHinhThuc.Location = new System.Drawing.Point(819, 518);
             this.cmbHinhThuc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbHinhThuc.Name = "cmbHinhThuc";
@@ -443,7 +417,6 @@
             this.txtSoCa.Name = "txtSoCa";
             this.txtSoCa.PasswordChar = '\0';
             this.txtSoCa.PlaceholderText = "";
-            this.txtSoCa.ReadOnly = true;
             this.txtSoCa.SelectedText = "";
             this.txtSoCa.Size = new System.Drawing.Size(159, 41);
             this.txtSoCa.TabIndex = 69;
@@ -466,7 +439,6 @@
             this.txtThuong.Name = "txtThuong";
             this.txtThuong.PasswordChar = '\0';
             this.txtThuong.PlaceholderText = "";
-            this.txtThuong.ReadOnly = true;
             this.txtThuong.SelectedText = "";
             this.txtThuong.Size = new System.Drawing.Size(159, 41);
             this.txtThuong.TabIndex = 70;
@@ -481,10 +453,11 @@
             this.cbbMaCV.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbbMaCV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbbMaCV.ItemHeight = 30;
-            this.cbbMaCV.Location = new System.Drawing.Point(822, 280);
+            this.cbbMaCV.Location = new System.Drawing.Point(819, 258);
             this.cbbMaCV.Name = "cbbMaCV";
             this.cbbMaCV.Size = new System.Drawing.Size(317, 36);
             this.cbbMaCV.TabIndex = 71;
+            this.cbbMaCV.SelectedIndexChanged += new System.EventHandler(this.cbbMaCV_SelectedIndexChanged);
             // 
             // frmStaffDetail
             // 
@@ -497,7 +470,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cmbHinhThuc);
             this.Controls.Add(this.dtpNgayTD);
-            this.Controls.Add(this.txtMaCV);
             this.Controls.Add(this.txtSDT);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.txtTenNV);
@@ -547,7 +519,6 @@
         public Guna.UI2.WinForms.Guna2TextBox txtTenNV;
         public Guna.UI2.WinForms.Guna2DateTimePicker dtpNgaySinh;
         public Guna.UI2.WinForms.Guna2TextBox txtSDT;
-        public Guna.UI2.WinForms.Guna2TextBox txtMaCV;
         public Guna.UI2.WinForms.Guna2DateTimePicker dtpNgayTD;
         public Guna.UI2.WinForms.Guna2ComboBox cmbHinhThuc;
         private System.Windows.Forms.Label label7;

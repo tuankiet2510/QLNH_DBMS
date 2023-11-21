@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
 using BUS;
+using System.Data.SqlClient;
 
 namespace GUI
 {
@@ -28,32 +29,16 @@ namespace GUI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmStaffDetail frm = new frmStaffDetail();
-            frm.cbbMaCV.DataSource = jobBUS.MaTenCongViec();
-            frm.cbbMaCV.ValueMember = "ID";
-            frm.cbbMaCV.DisplayMember = "Display";
+            frm.txtSoCa.Text = "0";
+            frm.txtThuong.Text = "0";
+            frm.txtSoCa.ReadOnly= true;
+            frm.txtThuong.ReadOnly= true;
             frm.txtMaNV.ReadOnly = false;
-            frm.Show();
-            frmStaff_Load(sender, e);
+            frm.ShowDialog();
+           Load_data();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            string manv = dgvStaff.CurrentRow.Cells[0].Value.ToString();
-            string honv = dgvStaff.CurrentRow.Cells[1].Value.ToString();
-            string tennv = dgvStaff.CurrentRow.Cells[2].Value.ToString();
-            DateTime ngaysinh = Convert.ToDateTime(dgvStaff.CurrentRow.Cells[3].Value);
-            string sdt = dgvStaff.CurrentRow.Cells[4].Value.ToString();
-            string macv = dgvStaff.CurrentRow.Cells[5].Value.ToString();
-            int soca = Convert.ToInt32(dgvStaff.CurrentRow.Cells[6].Value);
-            int thuong = Convert.ToInt32(dgvStaff.CurrentRow.Cells[7].Value);
-            DateTime ngaytd = Convert.ToDateTime(dgvStaff.CurrentRow.Cells[8].Value);
-            string hinhthuc = dgvStaff.CurrentRow.Cells[9].Value.ToString();
-            employeeDTO = new EmployeeDTO(manv, honv, tennv, ngaysinh, sdt, macv, soca, thuong, ngaytd, hinhthuc);
-            frmStaffDetail frm = new frmStaffDetail(employeeDTO);
-            frm.txtMaNV.ReadOnly = true;
-            frm.Show();
-            frmStaff_Load(sender, e);
-        }
+       
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -66,7 +51,7 @@ namespace GUI
                 if(employeeBUS.deleteEmployee(employeeDTO))
                 {
                     MessageBox.Show("Xóa thành công");
-                    frmStaff_Load(sender, e);
+                   Load_data();
                 }
                 else
                 {
@@ -106,9 +91,9 @@ namespace GUI
                 dgvStaff.DataSource = dt;
                 dgvStaff.AutoResizeColumns();
             }
-            catch (Exception e)
+            catch (SqlException e)
             {
-                MessageBox.Show("Không lấy được nội dung trong table NHANVIEN. Lỗi: " + e);
+                MessageBox.Show("Không lấy được nội dung trong table NHANVIEN. Lỗi: " + e.Message);
             }
         }
 
@@ -126,13 +111,15 @@ namespace GUI
             if (dgvStaff.CurrentCell.OwningColumn.Name == "dgvEdit")
             {
                 frmStaffDetail frm = new frmStaffDetail();
+                string selectedDisplay = dgvStaff.CurrentRow.Cells["dgvMaCV"].Value.ToString() + "-" + dgvStaff.CurrentRow.Cells["dgvTenCongViec"].Value.ToString();
+                frm.cbbMaCV.Text = selectedDisplay;
                 frm.txtMaNV.ReadOnly = true;
                 frm.txtMaNV.Text = dgvStaff.CurrentRow.Cells["dgvManv"].Value.ToString();
                 frm.txtHoNV.Text = dgvStaff.CurrentRow.Cells["dgvHoNV"].Value.ToString();
                 frm.txtTenNV.Text = dgvStaff.CurrentRow.Cells["dgvTenNV"].Value.ToString();
                 frm.dtpNgaySinh.Value = (DateTime)dgvStaff.CurrentRow.Cells["dgvNgaySinh"].Value;
                 frm.txtSDT.Text = dgvStaff.CurrentRow.Cells["dgvSDT"].Value.ToString();
-                frm.txtMaCV.Text = dgvStaff.CurrentRow.Cells["dgvMaCV"].Value.ToString();
+                //frm.txtMaCV.Text = dgvStaff.CurrentRow.Cells["dgvMaCV"].Value.ToString();
                 frm.txtSoCa.Text = dgvStaff.CurrentRow.Cells["dgvSoCa"].Value.ToString();
                 frm.txtThuong.Text = dgvStaff.CurrentRow.Cells["dgvThuong"].Value.ToString();
                 frm.dtpNgayTD.Value = (DateTime)dgvStaff.CurrentRow.Cells["dgvNgayTuyenDung"].Value;
@@ -166,6 +153,11 @@ namespace GUI
                 }
             }
 
+        }
+
+        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
